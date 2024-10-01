@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="http://dashboard.hmis.gov.np/js/jquery-2.2.3.min.js"></script> 
+  <script src="http://dashboard.hmis.gov.np/js/jquery.min.js"></script>
+  <script src="http://dashboard.hmis.gov.np/js/jquery-ui.min.js"></script>
+<script src="http://dashboard.hmis.gov.np/js/bootstrap.min.js"></script> 
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+
+<style>
+	.lbl{
+		font-size:27px;
+	}
+	.dta{
+		font-size: 20px;
+		font-weight:bold;
+	}
+</style>
+</head>
+<body style="background-color: rgba(0, 0, 0, 0.05)">
+
+
+  <!-- Header Section Start -->
+  <div class="row container-fluid" style="justify-content: center;margin-top: 10px;margin-left: 10px;">
+   <div class="col-4">
+    <div class="row">
+    <div class="col-6">
+      <div class="card overflow-hidden" style="height:88px;">
+        <div class="card-body p-0 d-flex align-items-center">
+          <div class="bg-primary text-white p-1 me-3" style="width: 65px;height: 100%;">
+           <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-people-fill mt-3" viewBox="0 0 16 16">
+			  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+			  <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+			  <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+			</svg>
+          </div>
+          <div class="ml-1">
+            <div class="fs-6 fw-semibold text-primary lbl">जनसंख्या</div>
+            <div class="text-medium-emphasis text-uppercase fw-semibold dta"> {{census.get("population")}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<div class="col-6">
+    <div class="card overflow-hidden" style="height:88px;">
+      <div class="card-body p-0 d-flex align-items-center">
+        <div class="bg-primary text-white p-1 me-3" style="width: 65px;height: 100%;">
+         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-hospital mt-3" viewBox="0 0 16 16">
+		  <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5Zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9h-.5Zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5ZM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5Z"/>
+		  <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
+		</svg>
+        </div>
+        <div class="ml-1">
+          <div class="fs-6 fw-semibold text-primary text-uppercase lbl">स्वास्थ्य संस्था संख्या</div>
+          <div class="text-medium-emphasis text-uppercase fw-semibold dta">{{hf}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+   </div>
+    <div class="col-4 text-center">
+      <img src="../Emblem_of_Nepal_2020.svg" style="width: 60px;"> 
+    <h2>{{orgname}}</h2>
+   </div>
+    <div class="col-4" style="">
+        <div class="row">
+      <div class="col-6">
+        <div class="card overflow-hidden" style="height:88px;">
+          <div class="card-body p-0 d-flex align-items-center">
+            <div class="bg-primary text-white p-1 me-3" style="height: 100%;">
+          <img src="https://openweathermap.org/img/w/{{icon}}.png" width="50" height="50" class="mt-3"> 
+  
+            </div>
+            <div class="ml-1">
+              <div class="fs-6 fw-semibold text-primary lbl">मौसम</div>
+              <div class="text-medium-emphasis text-uppercase fw-semibold dta">{{temp}} &deg;C [{{type}}]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+	  <div class="col-6">
+  <div class="card overflow-hidden" style="height:88px;">
+    <div class="card-body p-0 d-flex align-items-center">
+      <div class="bg-primary text-white p-1 me-3" style="height: 100%;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-house mt-3" viewBox="0 0 16 16">
+		  <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+		  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+		</svg>
+      </div>
+      <div class="ml-1">
+        <div class="fs-6 fw-semibold text-primary lbl">घरधुरी संख्या</div>
+        <div class="text-medium-emphasis text-uppercase fw-semibold dta">{{census.get("total_household")}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+   </div>
+  </div>
+     
+  <!-- Header Section End -->
+  <!-- <br> -->
+  <!-- Section Start -->
+  
+<!-- Section End -->
+
+
+
+<!-- Scroll Part Start -->
+  <div class="row" style="background: #2460b9;">
+    <div class="col-md-1" style="background-color: #ca010e;">
+     <h4 style="color:whitesmoke;padding-top: 7px; padding-left: 33px;font-weight: bold;"> जानकारी </h4>
+   </div>
+   <div class="col-md-11">
+    <div class="marquee">
+      <p style="font-size: xx-large;">{{update}} </p>
+    </div>
+  </div>
+</div>
+<!-- Scroll Part End -->
+
+
+<!-- Main Body Part Start-->
+
+<div class="row">
+
+  <div class="col-md-12 text-center">
+   
+  <div class="col-md-12">
+   <!--  <img id="changeImage" 
+
+    src="https://images.unsplash.com/photo-1646282014691-620f9af448a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+    style="max-height:625px;
+    max-width: 100%;" class="d-block w-100" alt="..."> -->
+    <figure class="highcharts-figure">
+     <div id="slideshow" class="row text-center">
+      
+        
+        
+       <div class="card-body" style="max-height:500px">
+        <table class="table" style=" height: 500px;">
+          <thead>
+            <tr>
+              <th scope="col">वडा</th>
+              <th scope="col">कुल स्वास्थ्य संस्था</th>
+              <th scope="col">सरकारी  स्वास्थ्य संस्था</th>
+               <th scope="col">गैरसरकारी स्वास्थ्य संस्था </th>
+               <th scope="col">नर्मल बेड </th>
+                <th scope="col">आइ सि यु बेड </th>
+              <th scope="col">भेन्टिलेटर बेड </th>
+            </tr>
+          </thead>
+          <tbody>
+           
+          {% for hf in hfcount %}
+       
+           <tr>
+                
+                <td>{{ hf.get("ward")}}</td>				
+                <td>{{ hf.get("total")}}</td>
+				<td>{{ hf.get("gov")}} </td>
+				<td>{{ hf.get("ngov")}}</td>
+				<td>{{ hf.get("normal")}}  </td>
+				<td>{{ hf.get("icu")}}  </td>
+				<td>{{ hf.get("vent")}} </td>
+             
+				
+		</tr> 
+		{% endfor %} 
+          </tbody>
+        </table></div>
+         
+          
+      {% for p in chart %}
+     
+      <div class="col-md-12 col-xs-12" id="{{ p.get("indicator")}}"> </div>
+      
+      
+      {% endfor %}
+      
+       {% for i in image %}
+ <div class="col-md-12" >
+    <div class="card">
+      <div class="card-body">   <img width="80%" height="700" src="{{baseUrl}}/{{i.get("image")}}"></div>
+    </div>
+ </div>
+   
+      {% endfor %}
+     
+      
+          <div class="col-md-12 col-xs-12" id="cont"> </div>
+          <div class="col-md-12 col-xs-12" id="s1"> </div>
+          <div class="col-md-12 col-xs-12" id="s2"> </div>
+          <div class="col-md-12 col-xs-12" id="s3"> </div>
+          <div class="col-md-12 col-xs-12" id="dash1"> </div>
+          <div class="col-md-12 col-xs-12" id="dash2"> </div>
+          <div class="col-md-12 col-xs-12" id="dash3"> </div>
+          <div class="col-md-12 col-xs-12" id="dash4"> </div>
+      
+    
+     
+     </figure>
+
+    <canvas id="meowChart" class="d-block w-100" style="padding:20px; max-height:630px"></canvas>
+  
+      <canvas id="ourChart" class="d-block w-100 hide" style="padding:20px; max-height:630px; width: 700px;"></canvas>
+
+        <canvas id="myChart" class="d-block w-100 hide" style="padding:20px; max-height:630px; width: 700px"></canvas>
+
+    <!-- Couldn't figure out the exact calculations but max-height: calc(100vh - 35%) will give tentative height that we need, but damages other magiins of screen-->
+
+    <!-- Also, without this part ->(class="d-block w-100" alt="...") the image will not fully cover the screen -->
+
+  </div>
+
+</div>
+
+<!-- Main Body Part End -->
+
+</body>
+</html>
+
+
+
+
+<style type="text/css">  
+.marquee {
+    width: 100%;
+  background-color: #2460b9;
+  color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 60s linear infinite;
+    margin-bottom:0rem;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+tr{
+line-height: 0.5;
+}
+
+.hide{
+  display: none !important;
+}
+</style>
+
+ 
+<script type="text/javascript">
+
+  function changeChartHere(){
+    // alert("1.5 seconds");
+    var element = document.getElementById("meowChart");
+      var elem = document.getElementById("ourChart")
+      var ele = document.getElementById("myChart");
+    if (count == 1){
+      element.classList.add('hide');
+      ele.classList.remove('hide');
+      count ++;
+      // alert(count)
+    }
+    else if(count==2){
+      // element.classList.add('hide');
+      ele.classList.add('hide');
+      elem.classList.remove('hide')
+      count ++;
+      // alert(count)
+    }
+    else {
+       elem.classList.add('hide');
+       element.classList.remove('hide');
+       count = 1;
+       // alert(count)
+    }
+  }
+
+// Image Change in 15 seconds
+
+  
+ 
+
+  var count = 1
+ //  setInterval(changeChartHere, 5000);
+
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(300)
+    .next()
+    .fadeIn(300)
+    .end()
+    .appendTo('#slideshow');
+}, 15000);
+
+</script>
+
+
+
+<style type="text/css">
+  
+  .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+  padding-left: 0;
+}
+
+</style>
+
+
+<script type="text/javascript">
+  
+  // chart dummy datas
+
+    var xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+  
+
+
+  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+  var yValues = [55, 49, 44, 24, 15];
+  var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+  ];
+
+  
+
+
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 16, 3],
+        backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  var baseUrl="http://dashboard.hmis.gov.np";
+  // var baseUrl="http://localhost:8083"
+  // var months=["Shrawn","Bhadra","Ashoj","Kartik","Mangsir","Poush","Magh","Falgun","Chaitra","Baishakh","Jestha","Ashar"];
+  var months=["श्रावण ","भदौ","असोज ","कार्तिक","मंसिर ","पौष","माघ","फाल्गुण","चैत्र","वैशाख","ज्येष्ठ ","असार"];
+  
+  $.ajax({
+
+        method: 'get',
+       url: baseUrl+"/getDashboardSutra?orgid="+{{orgid}}+"&pid=100&repType=broad-sector&fy=2078",
+        success: function(response) {
+          var a=JSON.parse(response);
+         // console.log(a);
+			var tbudget = 0;
+			var texp = 0;
+            var labels = [];
+            var series = [{
+                    name: "Budget",
+                    data: []
+                }, {
+                    name: "Expenditure",
+                    data: []
+                }];
+               // console.log(response);
+                
+                for (var i in a) {
+                        labels.push(a[i].namenp);
+                        series[0].data.push(a[i].totalbudget);
+                        series[1].data.push(a[i].expenditure);
+						tbudget += a[i].totalbudget;
+						texp += a[i].expenditure;
+                    }
+               //     console.log(series);
+	var htm='<div class="col-md-12 col-xs-12" id="s1"> </div>';
+	Highcharts.chart('s1', {
+
+    chart: {
+          type: 'column'
+      },
+      title: {
+          text: ' Broad Sector Budget and Expenditure'
+      },
+      subtitle: {
+          text: 'Source: Sutra'
+      },
+      xAxis: {
+          categories: labels,
+          crosshair: true
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Nrs.'
+          }
+      },
+      tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      },
+     plotOptions: {
+        
+          column: {
+              pointPadding: 0.2,
+              borderWidth: 0,
+              dataLabels: {
+                enabled: true
+              },
+          }
+      },
+    series: [{
+          type:'column',
+          name: series[0].name,
+          data: series[0].data.slice(1).map(Number)
+  
+      }, {
+          type:'column',
+          name: series[1].name,
+          data: series[1].data.slice(1).map(Number)
+  
+      }]
+});
+$(".highcharts-credits").html("Source: HMIS");
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
+    
+    $.ajax({
+
+        method: 'get',
+       url: baseUrl+"/getDashboardSutra?orgid="+{{orgid}}+"&pid=101&repType=sector&fy=2078",
+        success: function(response) {
+          var a=JSON.parse(response);
+         // console.log(a);
+			var tbudget = 0;
+			var texp = 0;
+            var labels = [];
+            var series = [{
+                    name: "Budget",
+                    data: []
+                }, {
+                    name: "Expenditure",
+                    data: []
+                }];
+            //    console.log(response);
+                
+                for (var i in a) {
+                        labels.push(a[i].namenp);
+                        series[0].data.push(a[i].totalbudget);
+                        series[1].data.push(a[i].expenditure);
+						tbudget += a[i].totalbudget;
+						texp += a[i].expenditure;
+                    }
+                  //  console.log(series);
+	
+	Highcharts.chart('s2', {
+
+    chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'Sectorial Budget & Expenditures'
+      },
+      subtitle: {
+          text: 'Source: Sutra'
+      },
+      xAxis: {
+          categories: labels,
+          crosshair: true
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Nrs.'
+          }
+      },
+      tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      },
+      plotOptions: {
+        
+          column: {
+              pointPadding: 0.2,
+              borderWidth: 0,
+              dataLabels: {
+                enabled: true
+              },
+          }
+      },
+
+    series: [{
+          type:'column',
+          name: series[0].name,
+          data: series[0].data.slice(1).map(Number)
+  
+      }, {
+          type:'column',
+          name: series[1].name,
+          data: series[1].data.slice(1).map(Number)
+  
+      }]
+});
+$(".highcharts-credits").html("Source: HMIS");
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
+   
+   
+   $.ajax({
+
+        method: 'get',
+       url: baseUrl+"/getDashboardSutra?orgid="+{{orgid}}+"&pid=102&repType=sectorial-activity&fy=2078",
+        success: function(response) {
+          var a=JSON.parse(response);
+         // console.log(a);
+			var tbudget = 0;
+			var texp = 0;
+            var labels = [];
+            var series = [{
+                    name: "Budget",
+                    data: []
+                }, {
+                    name: "Expenditure",
+                    data: []
+                }];
+               // console.log(response);
+                
+                for (var i in a) {
+                        labels.push(a[i].namenp);
+                        series[0].data.push(a[i].totalbudget);
+                        series[1].data.push(a[i].expenditure);
+						tbudget += a[i].totalbudget;
+						texp += a[i].expenditure;
+                    }
+               //     console.log(series);
+	
+	Highcharts.chart('s3', {
+
+    chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'Sectorial Activity Budget & Expenditures'
+      },
+      subtitle: {
+          text: 'Source: Sutra'
+      },
+      xAxis: {
+          categories: labels,
+          crosshair: true
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Nrs.'
+          }
+      },
+      tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      },
+      plotOptions: {
+        
+          column: {
+              pointPadding: 0.2,
+              borderWidth: 0,
+              dataLabels: {
+                enabled: true
+              },
+          }
+      },
+    series: [{
+          type:'column',
+          name: series[0].name,
+          data: series[0].data.slice(1).map(Number)
+  
+      }, {
+          type:'column',
+          name: series[1].name,
+          data: series[1].data.slice(1).map(Number)
+  
+      }]
+});
+$(".highcharts-credits").html("Source: HMIS");
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
+   
+  
+   $.ajax({
+
+        method: 'get',
+       url: baseUrl+"/getDashboardCombine?orgid="+{{orgid}},
+        success: function(response) {
+           var a=response.data;
+	var f=a[0];
+	var m=a[1];
+	
+	Highcharts.chart('cont', {
+
+    chart: {
+        type: 'column'
+    },
+
+    title: {
+        text: 'कुल नयाँ ओपीडी भ्रमण'+" "+ f.fys
+    },
+
+    xAxis: {
+        categories: months
+    },
+
+    yAxis: {
+        allowDecimals: false,
+        min: 0,
+        title: {
+            text: 'Number of visit'
+        }
+    },
+
+    legend: {
+              align: 'right',
+              x: -30,
+              verticalAlign: 'top',
+              y: 25,
+              floating: true,
+              backgroundColor: 'white',
+              borderColor: '#CCC',
+              borderWidth: 1,
+              shadow: false
+          },
+          tooltip: {
+              headerFormat: '<b>{point.x}</b><br/>',
+              pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+          },
+          plotOptions: {
+              column: {
+                  stacking: 'normal',
+                  dataLabels: {
+                      enabled: true
+                  }
+              }
+          },
+
+    series: [{
+        name: f.inamenp,
+        data: f.data.map(Number),
+        stack: 'male'
+    }, {
+        name: m.inamenp,
+        data: m.data.map(Number),
+        stack: 'male'
+    }]
+});
+$(".highcharts-credits").html("Source: HMIS");
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
+    
+   
+   
+     $.ajax({
+
+        method: 'get',
+       url: baseUrl+"/getDashboardCombinePublic?orgid="+{{orgid}}+"&pid=1&tid=1",
+        success: function(response) {
+           var a=response.data;
+	var f=a[0];
+	var m=a[1];
+	
+	Highcharts.chart('dash1', {
+
+    chart: {
+        type: 'column'
+    },
+
+    title: {
+        text: 'सुरक्षित मातृत्व कार्यक्रम - प्रसुति सेवा '+" "+ f.fys
+    },
+
+    xAxis: {
+        categories: months
+    },
+
+    yAxis: {
+        allowDecimals: false,
+        min: 0,
+        title: {
+            text: 'Total number'
+        }
+    },
+
+    legend: {
+              align: 'right',
+              x: -30,
+              verticalAlign: 'top',
+              y: 25,
+              floating: true,
+              backgroundColor: 'white',
+              borderColor: '#CCC',
+              borderWidth: 1,
+              shadow: false
+          },
+          tooltip: {
+              headerFormat: '<b>{point.x}</b><br/>',
+              pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+          },
+          plotOptions: {
+              column: {
+                  stacking: 'normal',
+                  dataLabels: {
+                      enabled: true
+                  }
+              }
+          },
+
+    series: [{
+        name: f.inamenp,
+        data: f.data.map(Number),
+        stack: 'male'
+    }, {
+        name: m.inamenp,
+        data: m.data.map(Number),
+        stack: 'male'
+    }]
+});
+$(".highcharts-credits").html("Source: HMIS");
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
+    
+    
+    
+    $.ajax({
+
+        method: 'get',
+       url: baseUrl+"/getDashboardCombinePublic?orgid="+{{orgid}}+"&pid=1&tid=0",
+        success: function(response) {
+           var a=response.data;
+	var f=a[0];
+	var m=a[1];
+	var s=a[2];
+	
+	Highcharts.chart('dash2', {
+
+    chart: {
+        type: 'column'
+    },
+
+    title: {
+        text: 'सुरक्षित मातृत्व कार्यक्रम '+" "+ f.fys
+    },
+
+    xAxis: {
+        categories: months
+    },
+
+    yAxis: {
+        allowDecimals: false,
+        min: 0,
+        title: {
+            text: 'Total number'
+        }
+    },
+
+    legend: {
+              align: 'right',
+              x: -30,
+              verticalAlign: 'top',
+              y: 25,
+              floating: true,
+              backgroundColor: 'white',
+              borderColor: '#CCC',
+              borderWidth: 1,
+              shadow: false
+          },
+          tooltip: {
+              headerFormat: '<b>{point.x}</b><br/>',
+              pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+          },
+          plotOptions: {
+              column: {
+                  stacking: 'normal',
+                  dataLabels: {
+                      enabled: true
+                  }
+              }
+          },
+
+    series: [{
+        name: f.inamenp,
+        data: f.data.map(Number),
+        stack: 'male'
+    }, {
+        name: m.inamenp,
+        data: m.data.map(Number),
+        stack: 'male'
+    },{
+        name: s.inamenp,
+        data: s.data.map(Number),
+        stack: 'male'
+    }]
+});
+$(".highcharts-credits").html("Source: HMIS");
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
+
+	$.ajax({
+
+        method: 'get',
+       url: baseUrl+"/getDashboardCombinePublic?orgid="+{{orgid}}+"&pid=3&tid=0",
+        success: function(response) {
+           var a=response.data;
+	var f=a[0];
+	var m=a[1];
+	var s=a[2];
+	
+	Highcharts.chart('dash3', {
+
+    chart: {
+        type: 'column'
+    },
+
+    title: {
+        text: 'पोषण कार्यक्रम '+" "+ f.fys
+    },
+
+    xAxis: {
+        categories: months
+    },
+
+    yAxis: {
+        allowDecimals: false,
+        min: 0,
+        title: {
+            text: 'Total number'
+        }
+    },
+
+    legend: {
+              align: 'right',
+              x: -30,
+              verticalAlign: 'top',
+              y: 25,
+              floating: true,
+              backgroundColor: 'white',
+              borderColor: '#CCC',
+              borderWidth: 1,
+              shadow: false
+          },
+          tooltip: {
+              headerFormat: '<b>{point.x}</b><br/>',
+              pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+          },
+          plotOptions: {
+              column: {
+                  stacking: 'normal',
+                  dataLabels: {
+                      enabled: true
+                  }
+              }
+          },
+
+    series: [{
+        name: f.inamenp,
+        data: f.data.map(Number),
+        stack: 'male'
+    }, {
+        name: m.inamenp,
+        data: m.data.map(Number),
+        stack: 'male'
+    },{
+        name: s.inamenp,
+        data: s.data.map(Number),
+        stack: 'male'
+    }]
+});
+$(".highcharts-credits").html("Source: HMIS");
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
+    
+   
+  
+  
+  
+   $.ajax({
+
+        method: 'get',
+        url: baseUrl+"/getDashboard?orgid="+{{orgid}},
+        success: function(response) {
+         var a=response.data;
+         var htm="";
+		for(var i in a){
+		 htm+="<div id='"+a[i].indicator+"'></div>";
+		
+		// $("#slideshow").html(htm);
+			console.log(a[i].fys);
+			if(a[i].chart_type=="Line Chart"){
+			
+			Highcharts.chart(a[i].indicator, {
+    chart: {
+        type: 'line',
+        height: '500px'
+       
+    },
+    title: {
+        text: a[i].inamenp
+    },
+    subtitle: {
+        text: a[i].inameen
+    },
+    xAxis: {
+        categories: months,
+        crosshair: true
+    },
+    yAxis: {
+        title: {
+            text: 'Value'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name:a[i].inamenp +" "+ a[i].fys,
+        data: a[i].data.map(Number)
+    }]
+});
+			}
+			
+			if(a[i].chart_type=="Pie Chart"){
+			var ind=a[i].indicator;
+			var nam=a[i].inamenp;
+			var series = [{
+                    name: "Total",
+                    data: []
+                }];
+			var piedata=a[i].data.map(Number);
+			for(var p in piedata){
+				var pies = {name:months[p],y:piedata[p]};
+				
+				series[0].data.push(pies);
+			}
+			
+			Highcharts.chart(ind, {
+    chart: {
+       type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+        }
+    },
+    title: {
+        text: nam
+    },
+    subtitle: {
+        text: a[i].inameen+"("+a[i].fys+")"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+             depth: 35,
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: series
+});
+			
+			}
+			
+			
+			if(a[i].chart_type=="Bar Chart"){
+			
+			Highcharts.chart(a[i].indicator, {
+    chart: {
+        type: 'column',
+        height: '500px',
+        options3d: {
+            enabled: true,
+            alpha: 0,
+            beta: 0,
+            depth: 70
+        }
+        
+    },
+    title: {
+        text: a[i].inamenp
+    },
+    subtitle: {
+        text: a[i].inameen
+    },
+    xAxis: {
+        categories: months,
+        crosshair: true,
+        labels: {
+            skew3d: true,
+            style: {
+                fontSize: '16px'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Value'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+   plotOptions: {
+                                    line: {
+                                      dataLabels: {
+                                        enabled: true
+                                      },
+                                      enableMouseTracking: true
+                                    },
+                                    column: {
+                                     depth: 50,
+                                      dataLabels: {
+                                        enabled: true
+                                      },
+                                      enableMouseTracking: true
+                                    },
+                                    bar: {
+                                      dataLabels: {
+                                        enabled: true
+                                      },
+                                      enableMouseTracking: true
+                                    },
+                                    areaspline: {
+                                      dataLabels: {
+                                        enabled: true
+                                      },
+                                      enableMouseTracking: true
+                                    }
+
+                                  },
+    series: [{
+        name: a[i].inamenp +" "+ a[i].fys,
+        data: a[i].data.map(Number)
+
+    }]
+});
+
+
+
+			
+  }
+		}
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
+    
+     setInterval(function() {
+                  window.location.reload();
+                }, 900000); 
+
+function logOpen(){
+	var purl = '{{baseUrl}}/log/dashboard';
+	var xh = $.ajax({
+			url:purl,
+			method:'post',
+			data:{orgid:'{{orgid}}'}
+		});
+	xh.done(()=>{/*logged*/});
+}
+logOpen();
+setInterval(()=>{
+	logOpen();
+}, 1500000);
+</script>

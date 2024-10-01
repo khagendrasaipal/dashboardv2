@@ -1,0 +1,978 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+		<title>DASHBOARD</title>
+        <!-- Google Fonts CDN -->
+        <!-- Google Fonts
+        ============================================ -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Khand:wght@500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700,800,900" rel="stylesheet" />        
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <script src="https://use.fontawesome.com/93c3e6ff0e.js"></script>
+
+        <!-- Bootstrap 4.6.1 CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">  
+
+        <!-- STYLESHEETS : begin -->
+        <script type="text/javascript" href="js/hmis.js"></script>
+        <script src="http://dashboard.hmis.gov.np/js/jquery-2.2.3.min.js"></script> 
+  <script src="http://dashboard.hmis.gov.np/js/jquery.min.js"></script>
+  <script src="http://dashboard.hmis.gov.np/js/jquery-ui.min.js"></script>
+<script src="http://dashboard.hmis.gov.np/js/bootstrap.min.js"></script> 
+         <style type="text/css">
+         
+   
+
+
+
+  
+  .highcharts-title{
+  	fill: #0062cc !important;
+  }
+  
+  .highcharts-subtitle{
+  	fill: #d53e4c !important;
+  }
+  .highcharts-legend-item{
+  	fill: #6a34cd !important;
+  }
+  /* -----------------------------------------------------------------------------
+
+    HMIS CSS File
+    This file contains the css structure of hmis index.html landing page template.
+    This file is written by Suman Shrestha, suman.shrestha2009@gmail.com - ask to this email address for other necessary style changes further.
+
+----------------------------------------------------------------------------- */	
+
+/*--------------------------------------------------------------
+## GLOBAL SECTION CSS
+--------------------------------------------------------------*/
+
+body, p{font-family: 'Mukta' !important;}
+h1, h2, h3, h4, h5, h6{font-family: 'Khand' !important;}
+
+
+/*--------------------------------------------------------------
+## HMIS SECTION CSS
+--------------------------------------------------------------*/
+
+.hmis-section {
+    background: #eff6ff;
+    display: block;
+    clear: both;
+    position: relative;
+    padding: 5px 0;
+}
+.hmis-section .company-info img {
+    height: 60px;
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+.hmis-section .company-info h3 {
+    color: #c00;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0px;
+    letter-spacing: 0.3px;
+}
+.hmis-section .company-info h5 {
+    color: #2460b9;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+.head-block1 {
+    display: block;
+    margin-top: 20px;
+}
+.head-block1 .icon {
+    color: #c00;
+    font-size: 2rem;
+    display: block;
+    float: left;
+    margin-right: 15px;
+}
+.head-block1 .info span.spc1 {
+    color: #2460b9;
+    font-size: 25px;
+    font-weight: 800;
+    display: block;
+}
+.head-block1 .info span.spc2 {
+    color: green;
+    font-family: Khand;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+
+
+
+/*--------------------------------------------------------------
+## MARQUEE SECTION CSS
+--------------------------------------------------------------*/
+.marquee-section {
+    display: block;
+    background: #c00;
+    color: #fff;
+}
+.time-display {
+    display: block;
+    float: left;
+    width: 10%;
+}
+.marquee-section #time {
+    font-size: 30px;
+    font-weight: 900;
+    font-family: 'Mukta';
+    padding-top: 22px;
+}
+.marquee-display {
+    display: block;
+    float: left;
+    width: 90%;
+}
+.marquee {
+    width: 100%;
+    background-color: #2460b9;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 60s linear infinite;
+    margin-bottom: 0rem;
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: 'Khand' !important;
+    letter-spacing: 0.7px;
+    padding: 10px 0px 5px;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+
+
+
+/*--------------------------------------------------------------
+## SLIDER SECTION CSS
+--------------------------------------------------------------*/
+
+.slider-section .table thead tr {
+    background: #c00;
+    color: #fff;
+    font-size: 22px;
+    line-height: 2;
+}
+tr{line-height: 0.5;}
+.hide{ display: none !important;}
+.slider-section .table thead tr th::before {
+  	content: '\f00b';
+  	font-family: "Font Awesome 5 free"; 
+	font-weight: 900;
+	padding-right: 7px;
+}
+
+/*--------------------------------------------------------------
+## FOOTER SECTION CSS
+--------------------------------------------------------------*/
+
+.footer-section {
+    background: #222;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 10px;
+    text-align: center;
+}
+
+.img-fluids{
+height:940px !important;
+	}
+</style>   
+<script>
+
+setInterval(() => {
+  const nepalTimezone = 'Asia/Kathmandu';
+
+// Create a new Date object and set the timezone
+const now = new Date();
+const options = { timeZone: nepalTimezone };
+
+// Format the time using the Intl.DateTimeFormat API
+const formatter = new Intl.DateTimeFormat('ne-NP', {
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+  timeZone: nepalTimezone,
+});
+
+// Get the formatted time string
+const timeString = formatter.format(now);
+   var t=convertToNepali(timeString);
+    document.getElementById('time').innerHTML = t;
+  }, 1000);
+	function convertToNepali(engNum){
+		var nepNum = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+		var tnum = "";
+		var engNums = engNum.split("");
+		for(const i of engNums){
+			if(nepNum[i] !== undefined){
+				tnum +=nepNum[i];
+			}else{
+				tnum +=i;
+			}
+		}
+		return tnum;
+	}
+</script>   
+    </head>
+
+
+
+    <body style="height: 100vh; width: 100vw;">
+        <div class="hmis-section">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-lg-2 col-sm-6 col-xs-12">
+                        <div class="head-block1">
+                            <div class="icon">
+                                <img src="https://openweathermap.org/img/w/{{icon}}.png">
+                            </div>
+                            <div class="info">
+                                <span class="spc1">  {{temp}} &deg;C  </span> 
+                                <span class="spc2" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif !important">  {{dates}} </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-6 col-xs-12">
+                        <div class="head-block1">            
+                            <div class="icon">
+                                <i class="fas fa-restroom"></i>
+                            </div>
+                            <div class="info">
+                                <span class="spc1"> {{population}}</span>
+                                <span class="spc2">जनसंख्या</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="company-info">
+                            <img class="img-fluid" src="../Emblem_of_Nepal_2020.svg">
+                            <h3>{{orgname}} </h3>
+                            <h5>{{pname}},नेपाल</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-6 col-xs-12">
+                        <div class="head-block1">
+                            <div class="icon">
+                                <i class="fa fa-hospital"></i>
+                            </div>
+                            <div class="info">
+                                <span class="spc1"> {{hf}}</span>
+                                <span class="spc2"> स्वास्थ्य संस्था </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-6 col-xs-12">
+                        <div class="head-block1">
+                            <div class="icon">
+                                <i class="fa fa-building"></i>
+                            </div>
+                            <div class="info">
+                                <span class="spc1">  {{household}} </span>
+                                <span class="spc2">घरधुरी </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- Ends hmis-section -->
+
+
+
+        <!-- Scroll Part Start -->
+        <div class="marquee-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="time-display col-md-2">
+                        <h4 id="time" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif !important;font-weight:100 !important"></h4>
+                    </div>
+                    <div class="marquee-display col-md-10">
+                        <div class="marquee">
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{update | raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ends marquee-section -->
+
+
+
+        <!-- Swiper -->
+        <div class="slider-section">
+            <figure class="highcharts-figure">
+                <div id="slideshow" class="text-center">
+                  
+                    <div class="slider-item card-body" data-duration="10000">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">वडा</th>
+                                    <th scope="col">कुल स्वास्थ्य संस्था</th>
+                                    <th scope="col">सरकारी  स्वास्थ्य संस्था</th>
+                                    <th scope="col">गैरसरकारी स्वास्थ्य संस्था </th>
+                                    <th scope="col">नर्मल बेड </th>
+                                    <th scope="col">आइ सि यु बेड </th>
+                                    <th scope="col">भेन्टिलेटर बेड </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>  
+                               {% for hf in hfcount %}
+             
+                 <tr>
+                      
+                      <td>{{ hf.get("ward")}}</td>				
+                      <td>{{ hf.get("total")}}</td>
+                      <td>{{ hf.get("gov")}} </td>
+                      <td>{{ hf.get("ngov")}}</td>
+                      <td>{{ hf.get("normal")}}  </td>
+                      <td>{{ hf.get("icu")}}  </td>
+                      <td>{{ hf.get("vent")}} </td>
+                   
+                      
+              </tr> 
+              {% endfor %} 
+                   
+                            </tbody>
+                        </table>
+                    </div> 
+                    
+                    {% if video != "1" %}
+						<div  class="col-md-12 slider-item">
+         
+          <script>
+          	function fullScreenVideo(){
+				var mv = document.getElementById("myvideo");
+				if (mv.requestFullscreen) {
+			    mv.requestFullscreen();
+			  } else if (mv.webkitRequestFullscreen) { /* Safari */
+			    mv.webkitRequestFullscreen();
+			  } else if (mv.msRequestFullscreen) { /* IE11 */
+			    mv.msRequestFullscreen();
+			  }
+			  $('#watchButton').click();
+			}
+          </script>
+         
+            	<video id="myvideo"  autoplay="autoplay" controls muted onload="fullScreenVideo()">
+				  <source src="{{baseUrl}}/{{video}}" type="video/mp4">
+				  <source src="{{baseUrl}}/{{video}}" type="video/ogg">
+				
+				</video>
+           
+         
+       </div>
+					{% endif %}
+                    
+                     {% for i in image %}
+       <div class="col-md-12 slider-item"   data-duration="{{i.get("time")*1000}}">
+         
+            <img class="img-fluids" style="height:800px !important"  src="{{baseUrl}}/{{i.get("image")}}">
+        
+       </div>
+         
+            {% endfor %}
+
+                
+                
+                  {% for p in fchart %}
+     
+              <div class="col-md-12 col-xs-12 slider-item" id="cc{{ p.get("id")}}" data-duration="15000"> </div>
+              
+              
+              {% endfor %}
+                     
+             {% for p in dchart %}
+             
+              <div class="col-md-12 col-xs-12 slider-item" id="cc{{ p.get("id")}}" data-duration="{{p.get("time")*1000}}"> </div>
+              
+              
+              {% endfor %}
+               
+                
+            {% for p in chart %}
+           
+            <div class="col-md-12 col-xs-12 slider-item" id="{{ p.get("indicator")}}" data-duration="{{p.get("time")*1000}}"> </div>
+            
+            
+            {% endfor %}
+            
+            
+                
+       </div>                        
+            </figure> 
+                   
+        </div>  <!-- Ends slider-section -->  
+          
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        
+        <script type="text/javascript">
+        
+     
+
+    
+  Highcharts.setOptions({
+    colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+});
+  
+    
+   
+  
+    var count = 1
+  $(".slider-item").hide();
+  
+let slideIndex = 0;
+let slides = document.getElementsByClassName("slider-item");
+showSlides();
+function showSlides() {
+  let i;
+  if(slideIndex!=0){
+  	var last = slideIndex-1;
+  	$(slides[last]).hide();
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1};
+  var dur = $(slides[slideIndex-1]).data("duration");
+  if(slides[slideIndex-1].querySelector("video")!=null){
+  	dur = slides[slideIndex-1].querySelector("video").duration*1000;
+  	slides[slideIndex-1].querySelector("video").play();
+  }
+  $(slides[slideIndex-1]).show();
+  setTimeout(showSlides, dur); // Change image every 2 seconds
+} 
+  
+setInterval(()=>{
+	openFullscreen();
+}, 2000);
+  
+var video = document.getElementById('myvideo');
+
+ 
+
+
+
+function openFullscreen() {
+$('#watchButton').trigger('click', [true]);
+var mf = document.getElementById("myvideo");
+            mf.webkitRequestFullscreen();
+            mf.style.display="";
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+ 
+ 
+}
+
+
+  
+  </script>
+  
+   <script type="text/javascript">
+    
+    // chart dummy datas
+  
+    
+  
+  
+    var baseUrl="http://dashboard.hmis.gov.np";
+    // var baseUrl="http://localhost:8083"
+    // var months=["Shrawn","Bhadra","Ashoj","Kartik","Mangsir","Poush","Magh","Falgun","Chaitra","Baishakh","Jestha","Ashar"];
+    var months=["श्रावण ","भदौ","असोज ","कार्तिक","मंसिर ","पौष","माघ","फाल्गुण","चैत्र","वैशाख","ज्येष्ठ ","असार"];
+    var screenWidth = window.screen.width;
+    console.log(screenWidth);
+    
+    
+      $.ajax({
+  
+          method: 'get',
+         url: baseUrl+"/dashboard/getConfig?orgid="+{{orgid}}+"&cid=1&dt=1",
+          success: function(response) {
+             var a=response.data;
+              for(var i in a){
+              var m = [];
+              var y = [];
+              var d=[];
+              
+                   var f={"mindicator":[],"myear":[]};
+      var inds = a[i].mindicator.split(",");
+        for(var k of inds){
+        m.push(k);
+          f.mindicator.push(k);
+        }
+        var yrs = a[i].myear.split(",");
+        for(var j of yrs){
+           y.push(parseInt(j));
+          f.myear.push(parseInt(j));
+        }
+         d.push({
+              mindicator: m, 
+              myear:  y
+          });
+       var tabid="cc"+a[i].id;
+        var ctype=a[i].charttype;
+        getCharts(tabid,ctype,inds,yrs,d[0],"f");
+       
+                  
+              }
+      
+  
+          },
+          fail: function() {
+              alert("failed");
+          }
+      });
+      
+       $.ajax({
+  
+          method: 'get',
+         url: baseUrl+"/dashboard/getConfig?orgid="+{{orgid}}+"&cid=0&dt=1",
+          success: function(response) {
+             var a=response.data;
+              for(var i in a){
+              var m = [];
+              var y = [];
+              var d=[];
+              
+                   var f={"mindicator":[],"myear":[]};
+      var inds = a[i].mindicator.split(",");
+        for(var k of inds){
+        m.push(k);
+          f.mindicator.push(k);
+        }
+        var yrs = a[i].myear.split(",");
+        for(var j of yrs){
+           y.push(parseInt(j));
+          f.myear.push(parseInt(j));
+        }
+         d.push({
+              mindicator: m, 
+              myear:  y
+          });
+       var tabid="cc"+a[i].id;
+        var ctype=a[i].charttype;
+        getChartsHmis(tabid,ctype,inds,yrs,d[0],"h");
+       
+                  
+              }
+      
+  
+          },
+          fail: function() {
+              alert("failed");
+          }
+      });
+      
+     function getCharts(tabid,ctype,inds,yrs,dat,type){
+       $.ajax({
+        
+                  method: "POST",
+                  url: baseUrl+"/dashboard/get-ind-data?orgid="+{{orgid}}+"&fcharttype="+ctype+"&type="+type+"&findicator="+inds+"&fyear="+yrs,
+                  data: dat,
+                  success: function (resp) {
+                  if(typeof resp.data=="string"){
+                       console.log(resp.data);
+                         $("#"+tabid).html(resp.data);
+                         
+                     }else{
+                      console.log(resp.data);
+                      
+           Highcharts.chart(tabid, {
+  
+      chart: {
+            type: ctype
+        },
+        title: resp.data[0].title,
+        subtitle: resp.data[0].subtitle,
+        xAxis: {
+            categories: resp.data[0].cats,
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Nrs.'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+       plotOptions: {
+          
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0,
+                dataLabels: {
+                  enabled: true
+                },
+            }
+        },
+      series: resp.data[0].series
+  });
+                     
+                     }
+                      
+  
+                  },
+                  fail: function () {
+  
+                      alert("failed");
+                  }
+              });
+          
+      }
+      
+      function getChartsHmis(tabid,ctype,inds,yrs,dat,type){
+       $.ajax({
+        
+                  method: "POST",
+                  url: baseUrl+"/dashboard/get-ind-data?orgid="+{{orgid}}+"&charttype="+ctype+"&type="+type+"&mindicator="+inds+"&myear="+yrs,
+                  data: dat,
+                  success: function (resp) {
+                  if(typeof resp.data=="string"){
+                       console.log(resp.data);
+                         $("#"+tabid).html(resp.data);
+                         
+                     }else{
+                      console.log(resp.data);
+                      
+           Highcharts.chart(tabid, {
+  
+      chart: {
+            type: ctype
+        },
+        title: resp.data[0].title,
+        subtitle: resp.data[0].subtitle,
+        xAxis: {
+            categories: resp.data[0].cats,
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Value'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+       plotOptions: {
+          
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0,
+                dataLabels: {
+                  enabled: true
+                },
+            }
+        },
+      series: resp.data[0].series
+  });
+                     
+                     }
+                      
+  
+                  },
+                  fail: function () {
+  
+                      alert("failed");
+                  }
+              });
+          
+      }
+    
+    
+    
+    
+    
+     $.ajax({
+  
+          method: 'get',
+          url: baseUrl+"/getDashboard?orgid="+{{orgid}},
+          success: function(response) {
+           var a=response.data;
+           var htm="";
+          for(var i in a){
+           htm+="<div id='"+a[i].indicator+"'></div>";
+          
+          // $("#slideshow").html(htm);
+              console.log(a[i].fys);
+              if(a[i].chart_type=="Line Chart"){
+              
+              Highcharts.chart(a[i].indicator, {
+      chart: {
+          type: 'line',
+          height: '500px'
+         
+      },
+      title: {
+          text: a[i].inamenp
+      },
+      subtitle: {
+          text: a[i].inameen
+      },
+      xAxis: {
+          categories: months,
+          crosshair: true
+      },
+      yAxis: {
+          title: {
+              text: 'Value'
+          }
+      },
+      plotOptions: {
+          line: {
+              dataLabels: {
+                  enabled: true
+              },
+              enableMouseTracking: false
+          }
+      },
+      series: [{
+          name:a[i].inamenp +" "+ a[i].fys,
+          data: a[i].data.map(Number)
+      }]
+  });
+              }
+              
+              if(a[i].chart_type=="Pie Chart"){
+              var ind=a[i].indicator;
+              var nam=a[i].inamenp;
+              var series = [{
+                      name: "Total",
+                      data: []
+                  }];
+              var piedata=a[i].data.map(Number);
+              for(var p in piedata){
+                  var pies = {name:months[p],y:piedata[p]};
+                  
+                  series[0].data.push(pies);
+              }
+              
+              Highcharts.chart(ind, {
+      chart: {
+         type: 'pie',
+          options3d: {
+              enabled: true,
+              alpha: 45,
+              beta: 0
+          }
+      },
+      title: {
+          text: nam
+      },
+      subtitle: {
+          text: a[i].inameen+"("+a[i].fys+")"
+      },
+      tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      accessibility: {
+          point: {
+              valueSuffix: '%'
+          }
+      },
+      plotOptions: {
+          pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+               depth: 35,
+              dataLabels: {
+                  enabled: true,
+                  format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+              }
+          }
+      },
+      series: series
+  });
+              
+              }
+              
+              
+              if(a[i].chart_type=="Bar Chart"){
+              
+              Highcharts.chart(a[i].indicator, {
+      chart: {
+          type: 'column',
+          height: '500px',
+          options3d: {
+              enabled: true,
+              alpha: 0,
+              beta: 0,
+              depth: 70
+          }
+          
+      },
+      title: {
+          text: a[i].inamenp
+      },
+      subtitle: {
+          text: a[i].inameen
+      },
+      xAxis: {
+          categories: months,
+          crosshair: true,
+          labels: {
+              skew3d: true,
+              style: {
+                  fontSize: '16px'
+              }
+          }
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Value'
+          }
+      },
+      tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      },
+     plotOptions: {
+                                      line: {
+                                        dataLabels: {
+                                          enabled: true
+                                        },
+                                        enableMouseTracking: true
+                                      },
+                                      column: {
+                                       depth: 50,
+                                        dataLabels: {
+                                          enabled: true
+                                        },
+                                        enableMouseTracking: true
+                                      },
+                                      bar: {
+                                        dataLabels: {
+                                          enabled: true
+                                        },
+                                        enableMouseTracking: true
+                                      },
+                                      areaspline: {
+                                        dataLabels: {
+                                          enabled: true
+                                        },
+                                        enableMouseTracking: true
+                                      }
+  
+                                    },
+      series: [{
+          name: a[i].inamenp +" "+ a[i].fys,
+          data: a[i].data.map(Number)
+  
+      }]
+  });
+  
+  
+  
+              
+    }
+          }
+          },
+          fail: function() {
+              alert("failed");
+          }
+      });
+      
+        setInterval(function() {
+                 
+                  var purl = '{{baseUrl}}';
+	var xh = $.ajax({
+			url:purl,
+			method:'get',
+			
+		});
+	xh.done(()=>{ window.location.reload();});
+                }, 900000); 
+                
+
+function logOpen(){
+var screenWidth = window.screen.width;
+var info=navigator.userAgent;
+console.log("Device pixel ratio: " + window.devicePixelRatio);
+if (screenWidth > 120) {
+	var purl = '{{baseUrl}}/log/dashboard';
+	var xh = $.ajax({
+			url:purl,
+			method:'post',
+			data:{orgid:'{{orgid}}',ss:screenWidth,infos:info}
+		});
+	xh.done(()=>{/*logged*/});
+	}
+}
+logOpen();
+setInterval(()=>{
+	logOpen();
+}, 1500000);
+  
+  
+  </script>
+  
+  
+        <!-- Demo styles -->
+
+    </body>
+</html>

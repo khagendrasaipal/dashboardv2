@@ -1,0 +1,161 @@
+/* -----------------------------------------------------------------------------
+
+    HMIS CSS File
+    This file contains the css structure of hmis index.html landing page template.
+    This file is written by Suman Shrestha, suman.shrestha2009@gmail.com - ask to this email address for other necessary style changes further.
+
+----------------------------------------------------------------------------- */	
+
+/*--------------------------------------------------------------
+## GLOBAL SECTION CSS
+--------------------------------------------------------------*/
+
+body, p{font-family: 'Mukta' !important;}
+h1, h2, h3, h4, h5, h6{font-family: 'Khand' !important;}
+
+
+/*--------------------------------------------------------------
+## HMIS SECTION CSS
+--------------------------------------------------------------*/
+
+.hmis-section {
+    background: #eff6ff;
+    display: block;
+    clear: both;
+    position: relative;
+    padding: 20px 0;
+}
+.hmis-section .company-info img {
+    height: 70px;
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+.hmis-section .company-info h3 {
+    color: #c00;
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+    margin: 10px;
+    letter-spacing: 0.3px;
+}
+.hmis-section .company-info h5 {
+    color: #2460b9;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+.head-block1 {
+    display: block;
+    margin-top: 40px;
+}
+.head-block1 .icon {
+    color: #c00;
+    font-size: 4rem;
+    display: block;
+    float: left;
+    margin-right: 15px;
+}
+.head-block1 .info span.spc1 {
+    color: #2460b9;
+    font-size: 30px;
+    font-weight: 900;
+    display: block;
+}
+.head-block1 .info span.spc2 {
+    color: green;
+    font-family: Khand;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+
+
+
+/*--------------------------------------------------------------
+## MARQUEE SECTION CSS
+--------------------------------------------------------------*/
+.marquee-section {
+    display: block;
+    background: #c00;
+    color: #fff;
+}
+.time-display {
+    display: block;
+    float: left;
+    width: 10%;
+}
+.marquee-section #time {
+    font-size: 30px;
+    font-weight: 900;
+    font-family: 'Mukta';
+    padding-top: 22px;
+}
+.marquee-display {
+    display: block;
+    float: left;
+    width: 90%;
+}
+.marquee {
+    width: 100%;
+    background-color: #2460b9;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 60s linear infinite;
+    margin-bottom: 0rem;
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: 'Khand' !important;
+    letter-spacing: 0.7px;
+    padding: 10px 0px 5px;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+
+
+
+/*--------------------------------------------------------------
+## SLIDER SECTION CSS
+--------------------------------------------------------------*/
+
+.slider-section .table thead tr {
+    background: #c00;
+    color: #fff;
+    font-size: 22px;
+    line-height: 2;
+}
+tr{line-height: 0.5;}
+.hide{ display: none !important;}
+.slider-section .table thead tr th::before {
+  	content: '\f00b';
+  	font-family: "Font Awesome 5 free"; 
+	font-weight: 900;
+	padding-right: 7px;
+}
+
+/*--------------------------------------------------------------
+## FOOTER SECTION CSS
+--------------------------------------------------------------*/
+
+.footer-section {
+    background: #222;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 10px;
+    text-align: center;
+}

@@ -1,0 +1,42 @@
+package org.saipal.dboard.config;
+
+public class PathConfigs {
+	public static String [] excludeResource = {
+			"/sign-in",
+			"/sign-in-admin",
+			"/",
+			"/*.*",
+			"/js/**",
+			"/css/**",
+			"/assets/**",
+			"/login",
+			"/test/**",
+			"/getDashboardCombine",
+			"/getDashboardCombinePublic",
+			"/getDashboard",
+			"/dashboard",
+			"/dashboard/",
+			"/web",
+			"/images/**",
+			"/getDashboardSutra",
+			"/log/dashboard",
+			"/log/portal",
+			"/dashboard1",
+			"/dashboard1/**",
+			"/dashboard2",
+			"/dashboardupdate",
+			"/web1",
+			"/web2",
+			"/dboardnew",
+			"/dashboardtest",
+			"/dashboard/getConfig",
+			"/dashboard/get-ind-data",
+			"/organization/getorgs",
+			"/organization/getlistOpen",
+			"/getwarddetails",
+			"/dashboard/getIndicators",
+			"/dashboard/getFyConfig",
+			"/dashboard/getSlider",
+			"/faq/getFaqs"
+	};
+}

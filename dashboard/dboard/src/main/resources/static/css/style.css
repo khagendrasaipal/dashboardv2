@@ -1,0 +1,401 @@
+/* -----------------------------------------------------------------------------
+
+    HMIS CSS File
+    This file contains the css structure of hmis index.html landing page template.
+    This file is written by Suman Shrestha, suman.shrestha2009@gmail.com - ask to this email address for other necessary style changes further.
+
+----------------------------------------------------------------------------- */    
+
+/*--------------------------------------------------------------
+## GLOBAL SECTION CSS
+--------------------------------------------------------------*/
+
+body, p{font-family: 'Mukta' !important;}
+h1, h2, h3, h4, h5, h6{font-family: 'Khand' !important;}
+.container-fluid{max-width: 1600px;}
+
+
+/*--------------------------------------------------------------
+## HMIS SECTION CSS
+--------------------------------------------------------------*/
+
+.hmis-section {
+    background: #eff6ff;
+    display: block;
+    clear: both;
+    position: relative;
+    padding: 20px 0 0;
+}
+.hmis-section .company-info img {
+    height: 70px;
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+.hmis-section .company-info h3 {
+    color: #c00;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    margin: 10px;
+    letter-spacing: 0.3px;
+}
+.hmis-section .company-info h5 {
+    color: #2460b9;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+.column5 {
+    display: block;
+    float: left;
+    width: 20%;
+}
+.head-block1 {
+    display: block;
+    margin-top: 30px;
+}
+.head-block1 .icon {
+    color: #c00;
+    font-size: 2.3rem;
+    display: block;
+    float: left;
+    margin-right: 15px;
+    padding-top: 5px;
+}
+.head-block1 .info span.spc1 {
+    color: #2460b9;
+    font-size: 20px;
+    font-weight: 900;
+    display: block;
+}
+.head-block1 .info span.spc2 {
+    color: green;
+    font-family: Khand;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+
+
+
+/*--------------------------------------------------------------
+## MARQUEE SECTION CSS
+--------------------------------------------------------------*/
+.marquee-section {
+    display: block;
+    background: #c00;
+    color: #fff;
+}
+.time-display {
+    display: block;
+    float: left;
+    width: 10%;
+}
+.marquee-section #time {
+    font-size: 20px;
+    font-weight: 900;
+    padding-top: 12px;
+    text-transform: uppercase;
+    text-align: right;
+    margin-right: 15px;
+}
+.marquee-display {
+    display: block;
+    float: left;
+    width: 90%;
+}
+.marquee {
+    width: 100%;
+    background-color: #2460b9;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 30s linear infinite;
+    margin-bottom: 0rem;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px 0px 5px;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+
+/*--------------------------------------------------------------
+## COLUMNS SECTION CSS
+--------------------------------------------------------------*/
+
+.columns-section {
+    background: #fff;
+    display: block; 
+    width: 100%; 
+    padding: 20px 0;
+}
+.columns-section .card-body {
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-shadow: 1px 4px 8px #ccc;
+    display: block;
+    padding: 25px;
+}
+.columns-section .card-body.equalheight {
+    min-height: 600px;
+}
+.columns-section .card-body.equalheight2 {
+    min-height: 440px;
+}
+.columns-section .card-body h3 {
+    color: #2460b9;
+    font-size: 22px;
+    font-weight: 900;
+}
+.columns-section .card-body p {
+    font-size: 17px;
+    font-weight: 500;
+    color: #444;
+    line-height: 30px;
+    text-align: justify;
+    padding-top: 20px;
+}
+.columns-section .card-body img {
+    border-radius: 5px;
+}
+.columns-section .card-body .table thead tr {
+    background: #c00;
+    color: #fff;
+    line-height: 1.3;
+}
+.columns-section .card-body .table thead tr th {
+    font-family: 'Khand';
+    vertical-align: middle;
+    letter-spacing: 0.3px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+}
+.columns-section .card-body .table tbody tr {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+
+/*--------------------------------------------------------------
+## MAP SECTION CSS
+--------------------------------------------------------------*/
+.map-section {
+    display: block;
+    padding: 40px 0 0;
+}
+.map-responsive {
+    position: relative;
+    padding-bottom: 30%; 
+    height: 0;
+    overflow: hidden;
+}
+.map-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+
+/*--------------------------------------------------------------
+## BEFORE FOOTER SECTION CSS
+--------------------------------------------------------------*/
+
+.before-footer-section {
+    background: #fef2f2;
+    padding: 60px 0;
+}
+.cards h3 {
+    color: #c00;
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+.card-content ul.inline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.card-content ul.inline-list li {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+    font-weight: 500;
+    color: #444;
+}
+.card-content ul.inline-list li:last-child {
+    border-bottom: none;
+}
+
+
+
+/*--------------------------------------------------------------
+## MAIN FOOTER SECTION CSS
+--------------------------------------------------------------*/
+
+.main-footer-section {
+    background: #dff9e7;
+    padding: 80px 0 60px;
+}
+.main-footer-section .card-content h4 {
+    color: #2460b9;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+.main-footer-section .card-content span {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.main-footer-section .team-list {
+    border: 1px solid #ddf1fd;
+    border-radius: 4px;
+    background: #ddf1fd;
+    padding: 15px;
+}
+.main-footer-section .team-list span.span1 {
+    color: #c00;
+    font-family: 'Khand';
+    font-weight: 600;
+    display: block;
+    border-bottom: 1px solid #dff9e7;
+    padding-bottom: 2px;
+}
+.main-footer-section .team-list span.span2 {
+    color: #c00;
+    font-weight: 600;
+    display: block;
+    border-bottom: 1px solid #dff9e7;
+    padding: 3px 0;
+    font-size: 13px;
+}
+.main-footer-section .team-list span.span3 {
+    color: #c00;
+     font-family: 'Khand';
+    font-weight: 600;
+    display: block;
+    border-bottom: 1px solid #dff9e7;
+    padding: 3px 0;
+    font-size: 13px;
+}
+.main-footer-section .team-list span.span4 {
+    color: #c00;
+    font-weight: 600;
+    display: block;
+    padding: 3px 0;
+    font-size: 13px;
+}
+.main-footer-section .team-list .span1 i, .main-footer-section .team-list .span2 i, 
+.main-footer-section .team-list .span3 i, .main-footer-section .team-list .span4 i {
+    padding-right: 10px;
+}
+
+
+
+/*--------------------------------------------------------------
+## FOOTER SECTION CSS
+--------------------------------------------------------------*/
+
+.footer-section {
+    background: #2460b9;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+/*--------------------------------------------------------------
+## CUSTOM CSS SCROLL TO TOP
+--------------------------------------------------------------*/
+.scroll-top-wrapper {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  text-align: center;
+  z-index: 99999999;
+  background-color: #c00;
+  color: #fff !important;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  right: 22px;
+  bottom: 80px;
+  padding-bottom: 2px;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  box-shadow: none; 
+}
+.scroll-top-wrapper:hover {
+  opacity: 0.6 !important; 
+}
+.scroll-top-wrapper.show {
+  visibility: visible;
+  cursor: pointer;
+  opacity: 1.0; 
+}
+.scroll-top-wrapper i.fa {
+    color: #fff;
+  line-height: inherit; 
+}
+
+
+
+
+/*--------------------------------------------------------------
+## MEDIA QUERY SECTION CSS
+--------------------------------------------------------------*/
+@media screen and (max-width: 1400px) {
+    .time-display{width: 5%;}
+    .marquee-display{width: 94%;}
+}
+
+@media screen and (max-width: 767px) {
+    .time-display{width: 15%;}
+    .marquee-section #time{font-size: 15px; padding-top: 11px;}
+    .marquee-display{width: 85%;}
+    .marquee p{font-size: 15px; font-weight: 600;}
+
+    .columns-section .card-body { margin-bottom: 25px;}
+    .columns-section .card-body.equalheight {min-height: auto;}
+    .before-footer-section .cards, .main-footer-section .cards {margin-bottom: 25px;}
+}
+
+@media screen and (max-width: 580px) {
+    .column5 { width: 50%; padding: 0px 50px;} 
+    .column5 .head-block1 { margin-top: 10px;}
+    .head-block1 .icon { font-size: 2rem;}
+    .head-block1 .info span.spc1 {font-size: 16px;}
+    .head-block1 .info span.spc2 { font-size: 15px;}    
+}

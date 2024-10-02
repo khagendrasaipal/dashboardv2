@@ -1,0 +1,175 @@
+<!-- <div id="oas_reading" class="oas-reading"> -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><strong>Create Infographics</strong></div>
+            <div class="card-body">
+                <form class="form-signin" [formGroup]="infographicsForm" (ngSubmit)="infographicsFormSubmit()">
+                    <input type="hidden" class="form-control" name="id" formControlName="id">
+
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Title</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" formControlName="title">
+                        </div>
+                    </div><br>
+
+                    <input class="form-control" type="hidden" formControlName="subtitle">
+
+
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4">
+                            <label>Description</label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea class="form-control" type="text" formControlName="description">   </textarea>
+
+                        </div>
+                    </div><br>
+
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Status</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" name="status" formControlName="status">
+                                <option value="" [selected] disabled>Select One</option>
+                                <option value="0">Draft</option>
+                                <option value="1">Publish</option>
+                            </select>
+
+
+                        </div>
+                    </div><br>
+                    <div *ngIf="isUploading" class="loader-wrapper">
+                        <div class="loader">Wait..</div>
+                      </div>
+
+                    <div class="row input-group col-md-12">
+                        <input type="hidden" formControlName="image" value="">
+                        <div class="col-md-4 forRequired">
+                            <label>Image</label>
+                        </div>
+                       
+                        <div class="col-md-8">
+                            <input class="form-control" type="file" name="mfile" id="mfile" (change)="handleFileInput($event)" style="margin-bottom: 5px;">
+                            <span style="color: gray;">File Formats (.png, .jpeg, jpg, mp4)</span>
+
+                            <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
+
+                            <image-cropper id="imgSelect" class="d-none" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                                [aspectRatio]="16 / 9" format="png" (imageCropped)="imageCropped($event)"
+                                ></image-cropper>
+
+                            <img class="d-none" id="imageDisplay" [src]="croppedImage" style="height: 275px; width:500px; background-color: gray;" />
+                        </div>
+                    </div><br>
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Display Time(Second)</label>
+                        </div>
+                        <div class="col-md-8">
+                           <input type="number" class="form-control" name="time" formControlName="time" > 
+
+                        </div>
+                        </div><br>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary px-4">Save</button>
+                        </div>
+                        <div class="col-6 text-right">
+                            <button type="button" (click)="resetForm()" class="btn btn-danger px-4">Reset</button>
+                        </div>
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="card">
+
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i><strong>Infographics List</strong>
+                <span style="float: right;">
+                    <a href="javascript:void(0)" routerLink="/infographics/gallery">Gallery</a>
+                    </span>
+            </div>
+
+            <div class="card-body">
+                <form class="form-srch" [formGroup]="srchForm">
+
+                    <div class="input-group">
+
+                        <input class="form-control" placeholder="Search" id="srch_term" name="srch_term" type="text"
+                            formControlName="srch_term" (keyup.enter)="search()">
+
+                        <button class="btn btn-default" type="button" (click)="search()"><i
+                                class="fa fa-search"></i></button>
+
+                    </div>
+                </form>
+                <hr />
+
+                <table class="table table-bordered table-striped table-sm tbl-sortable">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                          
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor=" let item of lists; let i = index; ">
+                            <td>{{item.id}}</td>
+                            <td>{{item.title}}</td>
+                         
+                            <td>{{item.description}}</td>
+                            <td>{{item.status}}</td>
+                            <td><a (click)="getUpdateItem(item.id)" href="javascript:void(0)" title="Edit"><svg cIcon
+                                        class="me-2" name="cil-pen"></svg></a>&nbsp;
+                                <a href="javascript:void(0)" (click)="deleteItem(item.id)" title="Delete"><svg cIcon
+                                        class="me-2" name="cil-trash"></svg></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <form [formGroup]="srchForm">
+                    <div class="row" style="float:right">
+                        <div class="col-md-12 smallbr">
+                            Entries <select name="entries" id="entries" formControlName="entries" (change)="search()">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select> &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </form>
+
+                <div class="col-md-6">
+                    <pagination [rotate]="true" [maxSize]="5" [totalItems]="pagination.total"
+                        [(ngModel)]="pagination.currentPage" [boundaryLinks]="true" [itemsPerPage]="pagination.perPage"
+                        (pageChanged)="paginatedData($event)" previousText="&lsaquo;" nextText="&rsaquo;"
+                        firstText="&laquo;" lastText="&raquo;"></pagination>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </div> -->

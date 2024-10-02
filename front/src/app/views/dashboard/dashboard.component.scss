@@ -1,0 +1,281 @@
+.info-box3 {
+  display: block;
+  min-height: 55px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  border-radius: 2px;
+  margin-bottom: 15px;
+}
+
+.info-box-icon_button {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+  display: block;
+  float: left;
+  height: 60px;
+  width: 56px;
+  text-align: center;
+  font-size: 45px;
+  line-height: 80px;
+  background: rgba(0,0,0,0.2);
+}
+.bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color: #00c0ef !important;
+  color: #fff !important;
+}
+
+.bg-green, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color: #00a65a !important;
+  color: #fff !important;
+}
+
+.bg-yellow, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color:#f39c12 !important;
+  color: #fff !important;
+}
+
+.bg-teal-active, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color:#30bbbb !important;
+  color: #fff !important;
+}
+
+.info-box-content_button {
+  padding: 5px 10px;
+  margin-left: 56px;
+}
+
+.info-box-text {
+  text-transform: uppercase;
+}
+
+.progress-description, .info-box-text {
+  display: block;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-box .progress, .info-box .progress .progress-bar {
+  border-radius: 0;
+}
+.info-box .progress {
+  background: rgba(0,0,0,0.2);
+  margin: 5px -10px 5px -10px;
+  height: 2px;
+}
+
+.info-box .progress .progress-bar {
+  background: #fff;
+}
+td{
+  font-size: 13px;
+}
+
+.info-box-sec {
+  height: 50px;
+}
+.info-box-sec {
+  display: block;
+  min-height: 50px;
+  background: #fff;
+  width: 100%;
+  box-shadow: none;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  padding: 0px;
+}
+
+.info-box-icon {
+  height: 48px;
+  padding: 1px;
+  background: #fff;
+  line-height: 48px;
+  font-size: 0px;
+  border-bottom: 0px;
+  width: 55px;
+}
+
+.info-box-icon {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+  display: block;
+  float: left;
+}
+
+.info-box-content {
+  padding: 5px 10px;
+  margin-left: 48px;
+}
+
+.info-box-content .info-box-number {
+  margin-top: -2px;
+}
+
+.info-box-number {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.info-box-content p {
+  margin-top: -7px;
+  font-weight: normal;
+  font-size: 12px;
+}
+p {
+  margin: 0 0 10px;
+}
+
+.flex-grow-1{
+  background: white !important;
+    margin-top: -23px !important;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0); /* Transparent background */
+  z-index: 9999; /* Ensure the overlay is on top of other elements */
+  pointer-events: auto; /* Enable pointer events for the overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  /* Styles for your regular content */
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: red;
+}
+
+
+// .loader {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100px;
+//   height: 100px;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   color: white;
+// }
+
+.watermark {
+  position: relative; /* Position the watermark text relative to this div */
+  // width: 100%; /* Set the width according to your requirement */
+  // height: 300px; /* Set the height according to your requirement */
+  background-color: #ffffff; /* Set the background color of the div */
+
+  /* Style the watermark text */
+  p {
+    position: absolute; /* Position the text absolutely inside the div */
+    top: 84%; /* Adjust vertically as needed */
+    left: 50%; /* Adjust horizontally as needed */
+    transform: translate(-50%, -50%); /* Center the text */
+    color: rgba(0, 0, 0, 0.3); /* Set the color and opacity for the watermark text */
+    font-size: 17px; /* Set the font size for the watermark text */
+    pointer-events: none; /* Ensure the text doesn't capture pointer events */
+  }
+}
+
+#carousel {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#slides {
+  overflow: hidden;
+  /* position: relative; */
+  width: 100%;
+  /* height: 850px; */
+  margin-left: 10px;
+}
+
+#slides ul {
+  list-style: none;
+  width: 100%;
+  /* height: 850px; */
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+#slides ul {
+  list-style: none;
+  width: 100%;
+  /* height: 850px; */
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+ 
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100% #c9c7c7 !important;
+}
+
+.carousel {
+  // width: 100%;
+  height: 80%; /* Set your desired height */
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+.carousel {
+  // position: relative;
+}
+
+.prev-icon,
+.next-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.5; /* Adjust the opacity as needed */
+  font-size: xx-large;
+}
+
+.prev-icon {
+  left: 10px; /* Adjust the distance from the left */
+}
+
+.next-icon {
+  right: 10px; /* Adjust the distance from the right */
+}
+
+
+
+
+
+:host {
+  .legend {
+    small {
+      font-size: x-small;
+    }
+  }
+}

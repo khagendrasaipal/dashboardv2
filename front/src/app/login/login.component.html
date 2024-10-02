@@ -1,0 +1,130 @@
+      
+   <!-- <div id="logreg-forms">
+    <div class="" style="text-align: center;">
+        <br>
+        <img src="../../assets/Emblem_of_Nepal_(2020).svg" id="icon" alt="User Icon" style="height: 100px; width: 100px;">
+        <br>
+        <h4><b>नेपाल सरकार</b></h4>
+        <p style="color:black">
+          स्वचालित कार्यालय प्रणाली <br>
+          (Office Automation System)
+        </p>
+      </div>
+        <form class="form-signin" [formGroup] = "loginForm" (ngSubmit)="submitForm()">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login</h1>          
+            <input type="text" class="form-control" placeholder="username" name="username" formControlName="username">
+            <span style="color: red;" *ngIf="loginForm.controls.username && loginForm.controls.username.invalid && loginForm.controls.username.touched">*Enter Valid Username</span>
+            <br>            
+            <input type="password" class="form-control" placeholder="password" name="password" formControlName="password">
+            <span style="color: red;" *ngIf="loginForm.controls.password && loginForm.controls.password.invalid && loginForm.controls.password.touched">*Enter Valid Password</span>
+            <br>
+            <select class="form-control" name="utype" formControlName="utype">
+              <option value="0" selected>-----------</option>
+              <option value="1">Admin</option>
+            </select>
+            <br>         
+            <button [disabled] = "loginForm.invalid" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <a href="javascript:void(0)" id="forgot_pswd">Forgot password?</a>
+            <hr>
+            <div style="color: darkolivegreen;">
+                To sign in, users should use their own username and password provided by their respective organization. Or can signup and contact administrator to activate the account.
+            </div>
+        </form>        
+    </div> -->
+
+    <style>
+      row {
+    --cui-gutter-x: -0.5rem !important;
+      }
+    </style>
+    
+<div class="">
+    <div  style="text-align: center;">
+      <br>
+      <img src="assets/emblem.svg" id="icon" alt="" style="height: 100px; width: 100px;">
+      <br>
+      <h4 style="color: #23669E;"><b>Department of Health Services</b></h4>
+      <h4 style="color: #23669E;"><b>Management Division</b></h4>
+      <p style="color:#c50a17;"><b>
+        Integrated Health Information Management Section
+      </b>
+      </p>
+      <h4>Dashboard System</h4>
+    </div><br><br>
+    <div class="container  ">
+<div class="row  ">
+  <div class="col-md-6" >
+      
+      <table style="margin-left: 20px;"><h3> Public Dashboard Portal</h3>
+        <tr *ngFor=" let item of orglist; let i = index; ">
+          <td><a  target="_blank" href="http://dashboard.hmis.gov.np/web?orgid={{item.id}}" >{{item.name}} </a></td>
+        </tr>
+      </table>
+  </div>
+
+    <div class="col-md-6">
+      <c-container>
+        <c-row class="">
+          <c-col md="9">
+            <c-card-group>
+              <c-card class="">
+                <c-card-body>
+                  <form class="form-signin" [formGroup] = "loginForm" (ngSubmit)="submitForm()">
+                    <h1>Login</h1>
+                    <p class="text-medium-emphasis">Sign In to your account</p>
+                   
+                    <c-input-group class="mb-3">
+                      <span cInputGroupText>
+                        <svg cIcon name="cilUser"></svg>
+                      </span>
+                      <input type="text" class="form-control" placeholder="Username" name="username" formControlName="username">
+                      <!-- <input autoComplete="username" cFormControl placeholder="Username" name="username" formControlName="username" /> -->
+                    </c-input-group>
+                    <c-input-group class="mb-4">
+                      <span cInputGroupText>
+                        <svg cIcon name="cilLockLocked"></svg>
+                      </span>
+                      <input type="password" class="form-control" placeholder="Password" name="password" formControlName="password">
+                      <!-- <input
+                        autoComplete="current-password"
+                        cFormControl name="password" formControlName="password"
+                        placeholder="Password"
+                        type="password"
+                      /> -->
+                    </c-input-group>
+                   
+                    <c-row>
+                      <c-col xs="6">
+                        <button type="submit" cButton class="px-4" color="primary">
+                          Login
+                        </button>
+                      </c-col>
+                      
+                    </c-row>
+                  </form>
+                </c-card-body>
+              </c-card>
+              <!-- <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
+                <c-card-body class="text-center">
+                  <div>
+                    <h2>Dashboard</h2>
+                    <p>
+                      This is web based dashboard system.<br>
+
+                      By using this system status of indicators can be visualized easily.
+                    </p>
+                  
+                  </div>
+                </c-card-body>
+              </c-card> -->
+            </c-card-group>
+          </c-col>
+        </c-row>
+      </c-container>
+    </div>
+
+    
+    </div>
+    </div>
+  </div>
+    

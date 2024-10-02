@@ -1,0 +1,210 @@
+<!-- <div id="oas_reading" class="oas-reading"> -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong>Public Dashboard Setup</strong></div>
+                <div class="card-body">
+                    <form class="form-signin" [formGroup]= "cForm" (ngSubmit)= "cFormSubmit()">
+                        <input type="hidden" class="form-control" name="id" formControlName="id"> 
+
+                        <div class="row input-group col-md-12">
+                            <div class="col-md-4 forRequired">
+                                <label>Fiscal Year</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select class="form-control" name="fy" formControlName="fy">
+                                    <option value="" selected disabled>Select One</option>
+                                    <option value="2076">2076/77</option>
+                                    <option value="2077">2077/78</option>
+                                   <option value="2078">2078/79</option>
+                                    
+                                </select>
+                               
+    
+                            </div>
+                            </div><br>
+                            <div class="row input-group col-md-12">
+                                <div class="col-md-4 forRequired">
+                                    <label>Program</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select class="form-control" name="p_id" formControlName="p_id" #cid (change)="getIndicators(cid.value)">
+                                        <option value="" selected disabled>Select One</option>
+                                        <option *ngFor=" let item of programs " [value]="item.id">{{ item.name}}</option>
+                                        
+                                    </select>
+                                    <span style="color: red;">
+                                      
+                                    </span>
+        
+                                </div>
+                                </div><br>
+
+
+                        <div class="row input-group col-md-12">
+                            <div class="col-md-4 forRequired">
+                                <label>Indicator</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select class="form-control" name="indicator" formControlName="indicator">
+                                    <option value="" selected disabled>Select One</option>
+                                    <option *ngFor=" let item of indicators " [value]="item.id">{{ item.name}}</option>
+                                    
+                                </select>
+                               
+    
+                            </div>
+                            </div><br>
+
+                            <div class="row input-group col-md-12">
+                                <div class="col-md-4 forRequired">
+                                    <label>Chart Type</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select class="form-control" formControlName="chart_type">
+                                        <option value="" Selected disabled>Select One</option>
+                                        <option value="Bar Chart">Bar Chart</option>
+                                        <!-- <option value="Pie Chart">Pie Chart</option> -->
+                                        <option value="Line Chart">Line Chart</option>
+                                       
+                                    </select> 
+        
+                                </div>
+                                </div><br>
+
+                                <div class="row input-group col-md-12">
+                                    <div class="col-md-4 forRequired">
+                                        <label>Display Time(Second)</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                       <input type="number" class="form-control" name="time" formControlName="time" > 
+            
+                                    </div>
+                                    </div><br>
+
+                                <div class="row input-group col-md-12">
+                                    <div class="col-md-4 forRequired">
+                                        <label>Status</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select class="form-control" formControlName="status">
+                                            <option value="" Selected disabled>Select One</option>
+                                            <option value="0">Publish</option>
+                                            <!-- <option value="Pie Chart">Pie Chart</option> -->
+                                            <option value="1">Draft</option>
+                                           
+                                        </select> 
+            
+                                    </div>
+                                    </div><br>
+
+                            <div class="col-md-3">
+                               
+                                
+                            </div>
+
+                        
+                      
+                        <!-- <div class="row input-group col-md-12">
+                            <div class="col-md-4 forRequired">
+                                <label>Value</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="value" formControlName="value">
+                                
+                            </div>
+                        </div> -->
+                        <!-- <br> -->
+
+                          
+                        
+                   
+    
+                      
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary px-4">Save</button>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button type="button" (click)= "resetForm()" class="btn btn-danger px-4">Reset</button>
+                            </div>
+                        </div>
+    
+    
+    
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="col-md-6">
+            <div class="card">
+    
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> <strong>Public Dashboard Setup List</strong>
+                </div>
+    
+                <div class="card-body">
+                    <form class="form-srch" [formGroup]="srchForm">
+
+                        <div class="input-group">
+                            
+                            <input class="form-control" placeholder="Search" id="srch_term" name="srch_term" type="text" formControlName="srch_term" (keyup.enter)="search()">
+    
+                            <button class="btn btn-default" type="button" (click)="search()"><i class="fa fa-search"></i></button>
+    
+                        </div>
+                    </form>
+                    <hr />
+    
+                    <table class="table table-bordered table-striped table-sm tbl-sortable">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>FY</th>
+                                <th>Indicator</th>
+                                <th>Chart Type</th>
+                                <th>Actions</th>
+    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor=" let item of lists; let i = index; ">
+                                <td>{{item.id}}</td>
+                                <td>{{item.fy}}</td>
+                                <!-- <td>{{item.indicator}}</td> -->
+                                <td>{{item.indicator}}</td>
+                                <td>{{item.chart_type}}</td>
+                                <td><a (click)="getUpdateItem(item.id)" href="javascript:void(0)" title="Edit"><svg cIcon class="me-2" name="cil-pen"></svg></a>
+                                    <a href="javascript:void(0)" (click)="deleteItem(item.id)" title="Delete"><svg cIcon class="me-2" name="cil-trash"></svg></a>
+                                </td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+
+                    <form [formGroup]="srchForm">
+                        <div class="row" style="float:right">
+                            <div class="col-md-12 smallbr">
+                                Entries <select name="entries" id="entries" formControlName="entries" (change)="search()">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </form>
+    
+                    <div class="col-md-6">
+                        <pagination [rotate]="true" [maxSize]="5" [totalItems]="pagination.total" [(ngModel)]="pagination.currentPage" [boundaryLinks]="true" [itemsPerPage]="pagination.perPage" (pageChanged)="paginatedData($event)"
+                        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                        ></pagination>
+                      </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->

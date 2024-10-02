@@ -1,0 +1,36 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="javascript:void(0)" routerLink="/infographics">Infographics</a></li>
+    <li class="breadcrumb-item active">Gallery</li>
+  </ol>
+</nav>
+<!-- Gallery -->
+<div class="row">
+  <div class="col-lg-4 col-md-12 mb-4 mb-lg-0" style="cursor: pointer;" (click)="showImage(template, $event)"
+    *ngFor="let item of listOfImages; let i = index">
+    <img src="{{listOfImages[i]}}" class="w-100 shadow-1-strong rounded mb-4" alt="Image" />
+  </div>
+  <!-- Gallery -->
+
+
+  
+
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">IMAGE TITLE</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <i class="bi bi-chevron-compact-left" style="position: absolute; top: 28%;
+                    left: -41px; cursor: pointer;
+                    font-size: 12pc; color: darkgray;" (click)="previousImage($event)"></i>
+      <img class="imgi" src="{{imageSource}}" alt="" style="height:750px !important; width: 1105px !important;">
+      <i class="bi bi-chevron-compact-right" style="position: absolute; cursor: pointer;top: 28%;font-size: 12pc;
+                    right: -41px; color: darkgray;" (click)="nextImage($event)"></i>
+
+    </div>
+  </ng-template>

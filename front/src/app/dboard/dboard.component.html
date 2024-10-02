@@ -1,0 +1,626 @@
+<!-- <div id="oas_reading" class="oas-reading"> -->
+    <style>
+        #c-chartjs-0{
+            max-height: 500px !important;
+        }
+    </style>
+            <div id="todaylog" class="col-md-12" style="display: none;">
+                <div class="card">
+        
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i><strong>Today Log Details</strong> 
+                    </div>
+        
+                    <div class="card-body">
+        
+                        
+        
+                        <form class="form-srch"  [formGroup]="logForm">
+        
+                            <div class="row input-group">
+                                <div class=" col-md-4">
+                                    <input class="form-control"  id="logdate"
+                                    name="logdate" type="date" formControlName="logdate" #ldate>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-info" type="button" (click)="gettodaylog(ldate.value)">View</button>
+                                </div>
+                               
+                            </div>
+                        </form>
+        
+                        <hr />
+        
+        
+                        <table class="table table-bordered table-striped table-sm tbl-sortable">
+                            <thead>
+                                <tr>
+                                    <th>SN.</th>
+                                    <th>Organization Name</th>
+                                    <th>Login</th>
+                                    <th>Screen</th>
+        
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor=" let item of todaylist; let i = index; ">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.orgname}}</td>
+                                    <td *ngIf="item.login=='Yes'"> <span class="badge ms-auto badge-md bg-success">{{item.login}}</span></td>
+                                    <td *ngIf="item.login=='No'"> <span class="badge ms-auto badge-md bg-danger">{{item.login}}</span></td>
+    
+                                    <td *ngIf="item.screen=='Yes'"> <span class="badge ms-auto badge-md bg-success">{{item.screen}}</span></td>
+                                    <td *ngIf="item.screen=='No'"> <span class="badge ms-auto badge-md bg-danger">{{item.screen}}</span></td>
+                                    <!-- <td>{{item.screen}}</td> -->
+                                  
+                                </tr>
+        
+                            </tbody>
+                        </table>
+        
+                        <form [formGroup]="srchForm" style="display: none;">
+                            <div class="row" style="float:right">
+                                <div class="col-md-12 smallbr">
+                                    Entries <select name="entries" id="entries" formControlName="entries"  (change)="search()">
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> &nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </form>
+        
+        
+                        <!-- <div class="col-md-6">
+                            <pagination [rotate]="true" [maxSize]="5" [totalItems]="pagination.total" [(ngModel)]="pagination.currentPage"
+                                [boundaryLinks]="true" [itemsPerPage]="pagination.perPage" (pageChanged)="paginatedData($event)"
+                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+                        </div> -->
+        
+                    </div>
+                </div>
+            </div>
+    <div id="log" style="display: none;"  class="row">
+
+
+        <div class="col-md-12">
+            <div class="card">
+    
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i><strong>Log List</strong> 
+                </div>
+    
+                <div class="card-body">
+    
+    
+    
+                    <form class="form-srch"  [formGroup]="srchForm" >
+    
+                        <div class="row input-group">
+                            <div class="col-md-3">
+                                <select class="form-control" id="srch_term" name="srch_term"  formControlName="srch_term">
+                                    <option value="">Select organization</option>
+                                    <option *ngFor=" let item of orgs " [value]="item.name">{{ item.name}}</option>
+                                  </select>
+
+                            </div>
+                            <div class="col-md-3">
+                                <input class="form-control"  id="ldate"
+                                name="ldate" type="date" formControlName="ldate" #dates>
+
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-success" type="button" (click)="search()"><i
+                                    class="fa fa-search"></i>Search</button>
+
+                            </div>
+                            <!-- <input class="form-control" placeholder="Search" id="srch_term"
+                                name="srch_term" type="text" formControlName="srch_term" (keyup)="search()"> -->
+                           
+                        </div>
+                    </form>
+    
+                    <hr />
+    
+    
+                    <table class="table table-bordered table-striped table-sm tbl-sortable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Organization Name</th>
+                                <th>Log Details</th>
+                                <th>Date</th>
+    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor=" let item of lists; let i = index; ">
+                                <td>{{item.lid}}</td>
+                                <td>{{item.orgname}}</td>
+                                <td>{{item.action}}</td>
+                                <td>{{item.createdon}}</td>
+                              
+                            </tr>
+    
+                        </tbody>
+                    </table>
+    
+                    <form [formGroup]="srchForm">
+                        <div class="row" style="float:right">
+                            <div class="col-md-12 smallbr">
+                                Entries <select name="entries" id="entries" formControlName="entries"  (change)="search()">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </form>
+    
+    
+                    <div class="col-md-6">
+                        <pagination [rotate]="true" [maxSize]="5" [totalItems]="pagination.total" [(ngModel)]="pagination.currentPage"
+                            [boundaryLinks]="true" [itemsPerPage]="pagination.perPage" (pageChanged)="paginatedData($event)"
+                            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+
+
+       
+</div>
+    <div *ngIf="usertype=='dashboard'">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><strong> Health Indicators</strong> &nbsp;&nbsp;<span style="float: right;" class="source">Source: <a target="_blank" href="http://hmis.gov.np/hmis">HMIS</a></span></div>
+                <div class="card-body">
+                    <form class="form-signin" [formGroup]= "cForm" (ngSubmit)= "cFormSubmit()">
+                        <input type="hidden" class="form-control" name="id" formControlName="id">
+                        <div class="row input-group col-md-12">
+                           
+                            <div class="col-md-5">
+                              
+                                <ng-select [items]="indicators" placeholder="Indicators" formControlName="mindicator"  name="mindicator" class="adjustar"
+                                        bindLabel="name" 
+                                        bindValue="uid" [multiple]="true" (change)="getInd($event)">
+                                       
+                                </ng-select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <!-- <select class="form-control" name="dyear" #fy formControlName="dyear" (change)="getData(iid.value,fy.value)">
+                                    <option value="">Fiscal Year</option>
+                                    <option *ngFor="let it of fyRange()" value="{{it.v}}" >{{it.label}}</option>
+                                </select> -->
+                                <ng-select [items]="fyRng" placeholder="Fiscal years"  formControlName="myear" name="myear"
+                                        bindLabel="label"
+                                        bindValue="v" [multiple]="true" (change)="getIndData($event)">
+                                </ng-select>
+                                
+                            </div>
+
+                            <div class="col-md-2">
+                                <!-- <select class="form-control" name="charttype" formControlName="charttype" #ct (change)="updateCtype(ct.value,iid.value,fy.value)">
+                                    <option value="bar">Bar Chart</option>
+                                    <option value="pie">Pie Chart</option>
+                                    <option value="line">Line Chart</option>
+                                    <option value="doughnut">Doughnut Chart</option>
+                                </select> -->
+
+                                <select class="form-control" name="charttype" formControlName="charttype" #ct >
+                                    <option value="column">Bar Chart</option>
+                                    <option value="pie">Pie Chart</option>
+                                    <option value="line">Line Chart</option>
+                                    <!-- <option value="doughnut">Doughnut Chart</option> -->
+                                    <option value="table">Table</option>
+                                </select>
+                                
+                                
+                            </div>
+                            <div class="col-md-2">
+                                <button  type="submit" class="btn btn-primary px-4">View</button> &nbsp;&nbsp;
+                                <button id="savebtn" type='button' style="display: none;"  class="btn btn-info px-4" (click)="saveConfig(template,0)">Save</button>
+                            </div>
+                        </div>
+                       
+                     
+                      
+                          <div id="table">
+                           
+                          </div>
+                          <div id="chartdiv" class="card-body">
+                            <div [chart]="highchart"></div>
+                            </div>
+                     
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><strong> Financial Indicators</strong> &nbsp;&nbsp;<span style="float: right;" class="source">Source: <a target="_blank" href="http://sutra.gov.np/hmis">Sutra</a></span></div>
+                <div class="card-body">
+                    <form class="form-signin" [formGroup]= "fForm" (ngSubmit)= "fFormSubmit()">
+                        <input type="hidden" class="form-control" name="id" formControlName="id">
+                        <div class="row input-group col-md-12">
+                           
+                            <div class="col-md-3">
+                              
+                                <ng-select [items]="findicators" placeholder="Indicators" formControlName="findicator" name="findicator"
+                                        bindLabel="name" 
+                                        bindValue="id"  (change)="getInd($event)">
+                                </ng-select>
+                            </div>
+
+                            <div class="col-md-3">
+                               
+                                <ng-select [items]="fyRng" placeholder="Fiscal years"  formControlName="fyear" name="fyear"
+                                        bindLabel="label"
+                                        bindValue="v"  (change)="getIndData($event)">
+                                </ng-select>
+                                
+                            </div>
+
+                            <div class="col-md-3">
+                             
+
+                                <select class="form-control" name="fcharttype" formControlName="fcharttype"  >
+                                    <option value="column">Bar Chart</option>
+                                    <!-- <option value="pie">Pie Chart</option> -->
+                                    <option value="line">Line Chart</option>
+                                    <!-- <option value="doughnut">Doughnut Chart</option> -->
+                                    <!-- <option value="table">Table</option> -->
+                                </select>
+                                
+                                
+                            </div>
+                            <div class="col-md-3">
+                                <button  type="submit" class="btn btn-primary px-4">View</button> &nbsp;&nbsp;
+                                <button id="savebtnf" type='button' style="display: none;"  class="btn btn-info px-4" (click)="saveFinanceConfig(template,1)">Save</button>
+                            </div>
+                        </div>
+                       
+                    
+                          <div id="ftable">
+                           
+                          </div>
+                          <div id="fchartdiv" class="card-body">
+                            <div [chart]="financechart"></div>
+                            </div>
+                      
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    
+        
+    </div><br>
+    <div class="row col-md-12">
+        <div *ngFor=" let item of dcharts " class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong>{{item.name}} {{(item.myear)}}/{{(item.myear-0)+1}}</strong>
+                    <div class="row col-md-12">
+                        <div class="col-md-6">
+                        <label for=""></label>
+                        <ng-toggle *ngIf="item.status==1" style="margin-right: 5px;" #{{item.cid}} (mouseup)="changeStatus(item.id,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                        unchecked: '#939da2',
+                        checked: '#007bff'
+                    }"></ng-toggle>
+                    <ng-toggle *ngIf="item.status==0" style="margin-right: 5px;" #{{item.cid}} (mouseup)="changeStatus(item.id,$event)"  style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                        unchecked: '#939da2',
+                        checked: '#007bff'
+                    }"></ng-toggle>
+                    </div>
+                    <div class="col-md-6" style="position: absolute; right: -100px;"> <a href="javascript:void(0)" (click)="deleteItem(item.id)" title="Delete"><svg cIcon class="me-1" style="color:red" name="cil-trash"></svg></a></div>
+                </div>
+                <div class="card-body">
+                    <div id="{{item.cid}}" [chart]="highcharts[item.cid]"></div>
+                    </div>
+                    </div>
+        </div>
+    </div>
+    <div *ngFor=" let item of fcharts " class="col-md-6">
+        <div class="card">
+            <div class="card-header"><strong>{{item.name}}</strong>
+                <div class="row col-md-12">
+                    <div class="col-md-6">
+                    <label for=""></label>
+                    <ng-toggle *ngIf="item.status==1" style="margin-right: 5px;" #{{item.cid}} (mouseup)="changeStatus(item.id,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                <ng-toggle *ngIf="item.status==0" style="margin-right: 5px;" #{{item.cid}} (mouseup)="changeStatus(item.id,$event)"  style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                </div>
+                <div class="col-md-6" style="position: absolute; right: -100px;"> <a href="javascript:void(0)" (click)="deleteItem(item.id)" title="Delete"><svg cIcon class="me-1" style="color:red" name="cil-trash"></svg></a></div>
+            </div>
+            <div class="card-body">
+                <div [chart]="highcharts[item.cid]"></div>
+                </div>
+                </div>
+    </div>
+</div>
+    <!-- <div class="row col-md-12">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong> Family Planning</strong>
+                  
+                        <div>
+                        <label for=""></label>
+                        <ng-toggle *ngIf="das1==1" style="margin-right: 5px;" #fps (mouseup)="getToggle(5,fps.value,0,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                        unchecked: '#939da2',
+                        checked: '#007bff'
+                    }"></ng-toggle>
+                    <ng-toggle *ngIf="das1==0" style="margin-right: 5px;" #fps (mouseup)="getToggle(5,fps.value,0,$event)" style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                        unchecked: '#939da2',
+                        checked: '#007bff'
+                    }"></ng-toggle>
+                    </div>
+                   
+                </div>
+                <div class="card-body">
+                    <div [chart]="fp"></div>
+                    </div>
+                    </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong> OPD</strong>
+                <div >
+                    <label for=""></label>
+                    <ng-toggle *ngIf="das2==1" style="margin-right: 5px;" #ops (mouseup)="getToggle(16,ops.value,0,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                <ng-toggle *ngIf="das2==0" style="margin-right: 5px;" #ops (mouseup)="getToggle(16,ops.value,0,$event)" style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                </div></div>
+                <div class="card-body">
+            <div [chart]="opd"></div>
+            </div>
+        </div>
+        </div><br>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong> Nutrition</strong>
+                    <div >
+                        <label for=""></label>
+                        <ng-toggle *ngIf="das3==1" style="margin-right: 5px;" #nps (mouseup)="getToggle(3,nps.value,0,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                        unchecked: '#939da2',
+                        checked: '#007bff'
+                    }"></ng-toggle>
+                    <ng-toggle *ngIf="das3==0" style="margin-right: 5px;" #nps (mouseup)="getToggle(3,nps.value,0,$event)" style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                        unchecked: '#939da2',
+                        checked: '#007bff'
+                    }"></ng-toggle>
+                    </div></div>
+                <div class="card-body">
+            <div [chart]="nutrition"></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong> Safe Motherhood</strong>
+                   <div >
+                    <label for=""></label>
+                    <ng-toggle *ngIf="das4==1" style="margin-right: 5px;" #sps (mouseup)="getToggle(1,sps.value,0,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                <ng-toggle *ngIf="das4==0" style="margin-right: 5px;" title="Turn ON to display in public Dashboard" #sps (mouseup)="getToggle(1,sps.value,0,$event)" style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                </div></div>
+                <div class="card-body">
+            <div [chart]="safem"></div>
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong> Safe Motherhood</strong>
+                    <div >
+                    <label for=""></label>
+                    <ng-toggle *ngIf="das5==1" style="margin-right: 5px;" #sfps (mouseup)="getToggle(1,sfps.value,1,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                <ng-toggle *ngIf="das5==0" style="margin-right: 5px;" #sfps (mouseup)="getToggle(1,sfps.value,1,$event)" style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                </div></div>
+                <div class="card-body">
+            <div [chart]="delivery"></div>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong> Broad Sector Budget & Expenditures   </strong>
+                   <div >
+                    <label for=""></label>
+                    <ng-toggle *ngIf="b1==1" style="margin-right: 5px;" #broad (mouseup)="getToggle(100,broad.value,0,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                <ng-toggle *ngIf="b1==0" style="margin-right: 5px;" title="Turn ON to display in public Dashboard" #broad (mouseup)="getToggle(100,broad.value,0,$event)" style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                </div></div>
+                <div class="card-body">
+            <div [chart]="broadsectorchart"></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong> Sectorial Budget & Expenditures   </strong>
+                   <div >
+                    <label for=""></label>
+                    <ng-toggle *ngIf="b2==1" style="margin-right: 5px;" #sector (mouseup)="getToggle(101,sector.value,0,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                <ng-toggle *ngIf="b2==0" style="margin-right: 5px;" title="Turn ON to display in public Dashboard" #sector (mouseup)="getToggle(101,sector.value,0,$event)" style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                </div></div>
+                <div class="card-body">
+            <div [chart]="sectorchart"></div>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong> Sectorial Activity Budget & Expenditures   </strong>
+                   <div >
+                    <label for=""></label>
+                    <ng-toggle *ngIf="b3==1" style="margin-right: 5px;" #activity (mouseup)="getToggle(102,activity.value,0,$event)" style="position: absolute; right: 0;"  [value]="true"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                <ng-toggle *ngIf="b3==0" style="margin-right: 5px;" title="Turn ON to display in public Dashboard" #activity (mouseup)="getToggle(102,activity.value,0,$event)" style="position: absolute; right: 0;"  [value]="false"  [color]="{
+                    unchecked: '#939da2',
+                    checked: '#007bff'
+                }"></ng-toggle>
+                </div></div>
+                <div class="card-body">
+            <div [chart]="sectoractchart"></div>
+            </div>
+        </div>
+        </div>
+
+        
+
+
+    </div> -->
+</div>
+
+    <!-- <div class="row" style="display: none;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><strong>Composite Indicators</strong></div>
+                <div class="card-body">
+                    <div class="row col-md-12" >
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                    <c-chart type="line" [data]="chartLineData2"></c-chart>
+                </div>
+                    <div class="col-md-1"></div>
+                </div>
+
+                    </div>
+                    </div>
+                    </div>
+                    </div> -->
+    <!-- </div> -->
+
+    <div class="row" style="display: none;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><strong>Population Dist</strong></div>
+                <div class="card-body">
+                    <div class="row col-md-12" >
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <div [chart]="popdistmf"></div>
+                        </div>
+                    <div class="col-md-1"></div>
+                </div>
+
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+                    </div>
+
+
+                  
+
+              <ng-template #template>
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Update Chart Config</h4>
+                    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                        <span aria-hidden="true" class="visually-hidden">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+              
+                    <form [formGroup]="configForm" (ngSubmit)="configFormSubmit()">
+                        <input type="hidden" name="cid" formControlName="cid" value="{{cid}}">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Chart Name</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="name" formControlName="name">
+                                <span style="color: red;"
+                                    *ngIf="configForm.controls.name && configForm.controls.name.invalid && configForm.controls.name.touched">
+                                    *Required Field
+                                </span>
+                            </div>
+                            
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Chart Order</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="order" formControlName="order">
+                                <span style="color: red;"
+                                    *ngIf="configForm.controls.order && configForm.controls.order.invalid && configForm.controls.order.touched">
+                                  *Required Field
+                                </span>
+                            </div>
+                         
+                        </div>
+                        <br>
+
+                        <div class="row input-group col-md-12">
+                            <div class="col-md-3 forRequired">
+                                <label>Display Time(Second)</label>
+                            </div>
+                            <div class="col-md-8">
+                               <input type="number" class="form-control" name="time" formControlName="time" > 
+    
+                            </div>
+                            </div><br>
+                       
+              
+                        <button class="btn btn-success mt-2" style="box-shadow: 0 10px 30px 0 rgba(95, 233, 95, 0.4);
+                        border-radius: 5px 5px 5px 5px; float: right;">
+                           Save
+                        </button>
+              
+                    </form>
+                
+                </div>
+              </ng-template>
+
+              
+              

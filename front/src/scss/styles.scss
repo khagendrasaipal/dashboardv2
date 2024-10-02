@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+// If you want to override variables do it here
+@import "variables";
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import styles with default layout.
+@import "~@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "~@coreui/chartjs/scss/coreui-chartjs";
+
+// perfect scrollbar theming for use with [perfectScrollbar] directive
+//@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+@import "layout";
+
+// Some temp fixes
+@import "fixes";
+
+// Prism.js
+@import "examples";
+
+// If you want to add something do it here
+@import "custom";
+
+   .sidebar-nav .nav-link{
+      color: white !important;
+    }
+
+    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+        max-width: 1610px !important;
+    }
+
+.btn-danger.btn.px-4{
+  position: absolute;
+  right: 0;
+  margin-right: 17.5px;
+}
+.header{
+background: #3c8dbc !important;
+padding: 0.2rem 0.4rem !important;
+min-height: 2rem !important;
+}
+
+.bgopen{
+  background: #3c8dbc !important;
+}
+
+perfect-scrollbar,.sidebar-toggler{
+  background: #222d32 !important;
+}
+
+.forRequired::after{
+  color: red;
+ content: " *";
+}
+
+html:not([dir="rtl"]) .sidebar-nav .nav-icon:first-child {
+  margin-left: -1.5rem;
+}
+
+html:not([dir="rtl"]) .sidebar-nav .nav-group-items .nav-link .nav-icon {
+  margin-left: -3rem;
+}
+
+i{
+  margin-bottom: 9px;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+ 
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100% #c9c7c7 !important;
+}
+
+ng-select { .ng-dropdown-panel { width: auto !important; } }

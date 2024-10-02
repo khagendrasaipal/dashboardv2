@@ -1,0 +1,212 @@
+<!--<c-header class="mb-4 d-print-none" position="sticky">-->
+<ng-container>
+  <c-container [fluid]="true">
+    <button
+      toggle="visible"
+      cHeaderToggler
+      [cSidebarToggle]="sidebarId"
+      class="ps-1"
+    >
+      <svg cIcon
+        name="cilMenu"
+        size="lg"
+      ></svg>
+    </button>
+
+    <c-header-nav  *ngIf="open==false" class="d-none d-lg-flex me-auto">
+      <c-nav-item>
+        <span style="font-size:20px;color: white;">
+          <b>Health Dashboard System </b>   
+
+        </span>
+        <span style="font-size:13px;color:white">
+          &nbsp;&nbsp; <b>Integrated Health Information Management Section </b> 
+
+        </span>
+      
+      </c-nav-item>
+
+    </c-header-nav>
+
+
+    <c-header-nav class="d-none d-lg-flex me-auto">
+      <c-nav-item>
+        <a cNavLink routerLink="/dboard" routerLinkActive="active">
+        <b style="color:white">  {{orgs}}</b>
+        </a>
+      </c-nav-item>
+      
+    </c-header-nav>
+
+    <c-header-nav *ngIf="usertype=='hmis'||usertype=='province'"  class="d-none d-lg-flex me-auto">
+      <c-nav-item>
+       <select class="form-control" id="orgid" name="orgid" #oid (change)="setOrg(oid.value)">
+         <option value="">Select organization</option>
+         <option *ngFor=" let item of orglist " [value]="item.id">{{ item.name}}</option>
+       </select>
+      </c-nav-item>
+      
+      
+    </c-header-nav>
+
+   
+
+    <c-header-nav  *ngIf="open" class="d-none d-lg-flex me-auto">
+      <c-nav-item>
+        <a target="_blank" href="{{dashurl}}{{mainorgid}}"><button type="button" class="btn btn-success px-4" style="color: aliceblue;">Public Dashboard</button></a>
+      
+      </c-nav-item>
+
+      
+    </c-header-nav>
+
+    <c-header-nav *ngIf="open" class="d-none d-lg-flex me-auto">
+      
+      <c-nav-item>
+       <a target="_blank" href="{{weburl}}{{mainorgid}}"> <button type="button"  class="btn btn-info px-4" style="color: aliceblue;">Web Portal</button></a>
+      </c-nav-item>
+    </c-header-nav>
+
+    <!-- <c-header-nav class="d-none d-lg-flex">
+      <c-nav-item>
+        <a routerLink="./" cNavLink>
+          <svg cIcon name="cilBell" size="lg"></svg>
+        </a>
+      </c-nav-item>
+      <c-nav-item>
+        <a routerLink="./" cNavLink>
+          <svg cIcon name="cilList" size="lg"></svg>
+        </a>
+      </c-nav-item>
+      <c-nav-item>
+        <a routerLink="./" cNavLink>
+          <svg cIcon name="cilEnvelopeOpen" size="lg"></svg>
+        </a>
+      </c-nav-item>
+    </c-header-nav> -->
+    <c-header-nav *ngIf="open" class="ms-3">
+      <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
+    </c-header-nav>
+
+  </c-container>
+  <!-- <c-header-divider></c-header-divider> -->
+  <!-- <c-container [fluid]="true">
+    <c-breadcrumb-router class="ms-2"></c-breadcrumb-router>
+  </c-container> -->
+</ng-container>
+<!--</c-header>-->
+
+<ng-template #userDropdown>
+  <c-dropdown alignment="end" variant="nav-item">
+    <button
+      cButton
+      color=""
+      [caret]="false"
+      cDropdownToggle
+      class="py-0"
+    >
+      <c-avatar
+        cTextColor="primary"
+        shape="rounded-1"
+        size="md"
+        src="./assets/img/avatars/avat.png"
+        status="success"
+      >
+      </c-avatar>
+    </button>
+    <ul cDropdownMenu class="pt-0 pr-5 w-auto">
+      <li>
+        <h6 cDropdownHeader class="bg-light fw-semibold py-2">Account</h6>
+      </li>
+
+      <li>
+        <a class="dropdown-item" href="javascript:void(0)" 
+        (click)="openModal(template)">Change Password</a>
+        <a (click)="logout()" cDropdownItem>
+          <svg cIcon class="me-2" name="cilLockLocked"></svg>
+          Logout
+        </a>
+      </li>
+      <li></li>
+    </ul>
+  </c-dropdown>
+</ng-template>
+
+<ng-template #template>
+  <div class="modal-header">
+      <h4 class="modal-title pull-left">Change Password: {{orgs}}</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+
+      <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+
+          <div class="row">
+              <div class="col-md-3">
+                  <label>Old Password</label>
+              </div>
+              <div class="col-md-8">
+                  <input class="form-control" type="password" formControlName="opassword">
+                  <span style="color: red;"
+                      *ngIf="changePasswordForm.controls.opassword && changePasswordForm.controls.opassword.invalid && changePasswordForm.controls.opassword.touched">
+                      *Required Field
+                  </span>
+              </div>
+              <div class="col-md-1 mt-1">
+                  <a (click)="showPassword($event)">
+                      <i class="bi bi-eye-slash-fill fa-lg"></i>
+                  </a>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-md-3">
+                  <label>New Password</label>
+              </div>
+              <div class="col-md-8">
+                  <input class="form-control" type="password" formControlName="password">
+                  <span style="color: red;"
+                      *ngIf="changePasswordForm.controls.password && changePasswordForm.controls.password.invalid && changePasswordForm.controls.password.touched">
+                      Passwords must match and be Minimum eight characters,
+                      at least one uppercase letter, one lowercase letter, one number and one special character
+                  </span>
+              </div>
+              <div class="col-md-1 mt-1">
+                  <a (click)="showPassword($event)">
+                      <i class="bi bi-eye-slash-fill fa-lg"></i>
+                  </a>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-md-3">
+                  <label>Confirm Password</label>
+              </div>
+              <div class="col-md-8">
+                  <input class="form-control" type="password" formControlName="rpassword">
+                  <span style="color: red;"
+                      *ngIf="changePasswordForm.controls.rpassword && changePasswordForm.controls.rpassword.invalid && changePasswordForm.controls.rpassword.touched">
+                      Passwords must match and be Minimum eight characters,
+                      at least one uppercase letter, one lowercase letter, one number and one special character
+                  </span>
+              </div>
+              <div class="col-md-1 mt-1">
+                  <a (click)="showPassword($event)">
+                      <i class="bi bi-eye-slash-fill fa-lg"></i>
+                  </a>
+
+              </div>
+          </div>
+
+          <button class="btn btn-success mt-2" style="box-shadow: 0 10px 30px 0 rgba(95, 233, 95, 0.4);
+          border-radius: 5px 5px 5px 5px; float: right;">
+              Change Password
+          </button>
+
+      </form>
+  
+  </div>
+</ng-template>
+

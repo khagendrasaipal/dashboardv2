@@ -1,0 +1,180 @@
+<!-- <div id="oas_reading" class="oas-reading"> -->
+<div class="row">
+
+    <div class="col-md-6">
+        <form class="form-signin" [formGroup]="organizationForm" (ngSubmit)="organizationFormSubmit()">
+            <input type="hidden" formControlName="id">
+            <div class="card">
+                <div class="card-header"><strong>Create Users</strong></div>
+                <div class="card-body">
+
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Full Name</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="fullname" formControlName="fullname">
+                            
+                        </div>
+
+                    </div><br>
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Username</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="email" formControlName="email">
+                            
+                        </div>
+
+                    </div><br>
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Password</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control" name="password" formControlName="password">
+                            
+                        </div>
+
+                    </div><br>
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Confirm Password</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control" name="cpassword" formControlName="cpassword">
+                            
+                        </div>
+
+                    </div><br>
+
+                    
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Organization</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" name="orgid" formControlName="orgid">
+                                <option value="">Select One</option>
+                                <option *ngFor=" let item of parents " [value]="item.id">{{ item.name}}</option>
+                                
+                            </select>
+                            <span style="color: red;">
+                              
+                            </span>
+
+                        </div>
+                    </div><br>
+
+                    <div class="row input-group col-md-12">
+                        <div class="col-md-4 forRequired">
+                            <label>Role</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" name="role" formControlName="role">
+                                <option value="">Select One</option>
+                                <option value="SA">Super Admin</option>
+                                <option value="OM">Organization Management</option>
+                                <option value="UM">User Management</option>
+                                <option value="OUM">Organization &amp; User Management</option>
+                                
+                            </select>
+                            <span style="color: red;">
+                              
+                            </span>
+
+                        </div>
+                    </div><br>
+                   
+
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary px-4">Save</button>
+                        </div>
+                        <div class="col-6 text-right">
+                            <button type="button" (click)="resetForm()" class="btn btn-danger px-4">Reset</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+
+
+
+
+    <div class="col-md-6">
+        <div class="card">
+
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i><strong>Users List</strong> 
+            </div>
+
+            <div class="card-body">
+
+
+
+                <form class="form-srch"  [formGroup]="srchForm" >
+
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Search" id="srch_term"
+                            name="srch_term" type="text" formControlName="srch_term" (keyup)="search()">
+                        <button class="btn btn-default" type="button" (click)="search()"><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                </form>
+
+                <hr />
+
+
+                <table class="table table-bordered table-striped table-sm tbl-sortable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Fullname</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor=" let item of lists; let i = index; ">
+                            <td>{{item.id}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.fullname}}</td>
+                            <td><a (click)="getUpdateItem(item.id)" href="javascript:void(0)" title="Edit"><svg cIcon class="me-2" name="cil-pen"></svg></a>&nbsp;
+                                <a href="javascript:void(0)" (click)="deleteItem(item.id)" title="Delete"><svg cIcon class="me-2" name="cil-trash"></svg></a>
+                                &nbsp;<a href="javascript:void(0)" (click)="loginItem(item.email)" title="login"><svg cIcon class="me-2" name="cil-pen"></svg></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <form [formGroup]="srchForm">
+                    <div class="row" style="float:right">
+                        <div class="col-md-12 smallbr">
+                            Entries <select name="entries" id="entries" formControlName="entries"  (change)="search()">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select> &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </form>
+
+
+                <div class="col-md-6">
+                    <pagination [rotate]="true" [maxSize]="5" [totalItems]="pagination.total" [(ngModel)]="pagination.currentPage"
+                        [boundaryLinks]="true" [itemsPerPage]="pagination.perPage" (pageChanged)="paginatedData($event)"
+                        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+                </div>
+
+            </div>
+        </div>
+    </div>
